@@ -1,49 +1,34 @@
 ---
-const features = [
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
-    title: "出張費・見積もり 0円",
-    description: "名古屋市内・近郊エリアへの出張費は完全無料。無料見積もり・査定だけでもお気軽にご依頼ください。買取が成立しなくても費用は一切かかりません。",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    title: "最短30分・即日対応",
-    description: "お電話一本でスタッフが即日駆けつけます。お引越し直前や急な不用品処分にも柔軟に対応。お客様のご都合に合わせてスケジュール調整も可能です。",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>`,
-    title: "その場で現金払い",
-    description: "査定後、その場で現金にてお支払い。後日振込を待つ必要はありません。お品物の価値をすぐに現金に換えられます。",
-  },
-];
 ---
-
-<section id="service" class="py-12 md:py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-4">
-      徳丸商会の出張買取サービス
+<section id="service" class="py-16 md:py-28">
+  <div class="max-w-5xl mx-auto px-5">
+    <p class="text-gold text-[10px] md:text-xs tracking-[0.15em] font-bold mb-3 uppercase">Our Service</p>
+    <h2 class="text-xl md:text-3xl font-bold text-navy mb-8 md:mb-14 max-w-lg">
+      なぜ徳丸商会が<br />選ばれるのか
     </h2>
-    <p class="text-center text-warm-gray-light text-sm md:text-base mb-6 max-w-md md:max-w-2xl mx-auto leading-[1.8]">
-      愛知県名古屋市内・近郊での中古家電・家具の出張買取は、徳丸商会にお任せください。1点から無料見積もり・即日訪問いたします。
-    </p>
 
-    <!-- AEO: AI検索エンジンが引用しやすい定義テキスト -->
-    <div class="max-w-2xl mx-auto mb-8 md:mb-12 bg-cream rounded-xl p-4 md:p-5 border border-cream-dark text-xs md:text-sm text-warm-gray leading-[1.9] text-left">
-      <p>
-        <strong class="text-navy">出張買取とは</strong>、お客様のご自宅にスタッフが訪問し、不用品をその場で査定・買取するサービスです。徳丸商会では名古屋市を中心に愛知県全域で対応。出張費・見積もり・キャンセル料はすべて無料です。
-      </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-14 md:mb-20">
+      <div class="border-t-2 border-navy pt-6">
+        <p class="text-3xl md:text-4xl font-black text-navy/15 mb-3">01</p>
+        <h3 class="font-bold text-navy text-base md:text-lg mb-2">出張費・見積もり 0円</h3>
+        <p class="text-warm-gray-light text-sm leading-[1.9]">名古屋市内・近郊エリアへの出張費は完全無料。査定だけでもお気軽にご依頼ください。</p>
+      </div>
+      <div class="border-t-2 border-navy pt-6">
+        <p class="text-3xl md:text-4xl font-black text-navy/15 mb-3">02</p>
+        <h3 class="font-bold text-navy text-base md:text-lg mb-2">最短30分・即日対応</h3>
+        <p class="text-warm-gray-light text-sm leading-[1.9]">お電話一本でスタッフが即日駆けつけます。お引越し直前や急な不用品処分にも柔軟に対応。</p>
+      </div>
+      <div class="border-t-2 border-navy pt-6">
+        <p class="text-3xl md:text-4xl font-black text-navy/15 mb-3">03</p>
+        <h3 class="font-bold text-navy text-base md:text-lg mb-2">その場で現金払い</h3>
+        <p class="text-warm-gray-light text-sm leading-[1.9]">査定後、その場で現金にてお支払い。後日振込を待つ必要はありません。</p>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-      {features.map((feature) => (
-        <div class="text-center">
-          <div class="w-16 h-16 md:w-20 md:h-20 bg-navy rounded-2xl flex items-center justify-center text-gold mx-auto mb-4 md:mb-6 shadow-lg">
-            <Fragment set:html={feature.icon} />
-          </div>
-          <h3 class="font-bold text-navy text-lg md:text-xl mb-2 md:mb-3">{feature.title}</h3>
-          <p class="text-warm-gray text-sm md:text-base leading-[1.8]">{feature.description}</p>
-        </div>
-      ))}
+    <div class="border-l-2 border-gold pl-5 md:pl-8 max-w-2xl">
+      <p class="text-warm-gray text-sm leading-[2]">
+        <strong class="text-navy">出張買取とは</strong>、お客様のご自宅にスタッフが訪問し、不用品をその場で査定・買取するサービスです。徳丸商会では名古屋市を中心に愛知県全域で対応。出張費・見積もり・キャンセル料はすべて無料です。
+      </p>
     </div>
   </div>
 </section>
