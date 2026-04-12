@@ -1,5 +1,5 @@
 // Keep deployment routing in one place for GitHub Pages base-path hosting.
-export const basePath = "/tokumaru-shokai-lp/";
+export const basePath = "/tokumaru-public-page/";
 
 export const homePath = basePath;
 export const privacyPolicyPath = `${basePath}privacy-policy/`;

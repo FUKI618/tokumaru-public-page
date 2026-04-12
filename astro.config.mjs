@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://fuki618.github.io",
-  base: "/tokumaru-shokai-lp",
+  base: "/tokumaru-public-page",
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

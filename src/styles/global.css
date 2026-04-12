@@ -1,33 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Trust Blue - 信頼・安定・誠実 */
-  --color-navy: #1e3a5f;
-  --color-navy-light: #2a4d7a;
-  --color-navy-dark: #142842;
+  /* 玄人カラーパレット — 落ち着き・知性・格式 */
 
-  /* Action Green - 安心・安全・前向きな行動 */
-  --color-cta: #1a8a6e;
-  --color-cta-light: #22a382;
+  /* Deep Ink — 権威・格式・落ち着き */
+  --color-navy: #1c2d3f;
+  --color-navy-light: #263d54;
+  --color-navy-dark: #111d2b;
 
-  /* Gold - 品格・プレミアム・実績 */
-  --color-gold: #8b641f;
-  --color-gold-light: #c7963b;
+  /* Sage Green — 安心・誠実・上品な行動 */
+  --color-cta: #2e7d68;
+  --color-cta-light: #3a9980;
 
-  /* Warm Ivory - 親近感・居心地のよさ */
-  --color-cream: #f7f5f0;
-  --color-cream-dark: #ede8df;
+  /* Aged Gold — 品格・歴史・本物感 */
+  --color-gold: #96783a;
+  --color-gold-light: #b8944e;
 
-  /* Text - ウォームグレー（冷たくない） */
-  --color-warm-gray: #4a4540;
-  --color-warm-gray-light: #6f6964;
+  /* Warm Stone — 落ち着いた背景 */
+  --color-cream: #f4f2ed;
+  --color-cream-dark: #e8e4dc;
 
-  /* LINE Official Green */
-  --color-line: #008a43;
+  /* Carbon Text — 読みやすく品のあるグレー */
+  --color-warm-gray: #3a3632;
+  --color-warm-gray-light: #6b655f;
 
-  /* Subtle alert (urgency without alarm) */
-  --color-alert: #9c6210;
-  --color-alert-light: #e09a35;
+  /* LINE */
+  --color-line: #06c755;
+
+  /* Alert — 控えめな注意喚起 */
+  --color-alert: #8a6020;
+  --color-alert-light: #c29040;
 
   --font-sans: "Noto Sans JP", sans-serif;
 }
@@ -35,12 +37,12 @@
 html {
   scroll-behavior: smooth;
   font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 17px;
-  }
+  html { font-size: 16px; }
 }
 
 section[id] {
@@ -50,38 +52,25 @@ section[id] {
 body {
   font-family: var(--font-sans);
   color: var(--color-warm-gray);
-  background-color: #fff;
+  background-color: #faf9f7;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
 }
 
-/* 横スクロールのスクロールバー非表示 */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+/* スクロールバー非表示 */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 
 @keyframes pulse-slow {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
+  50% { opacity: 0.88; }
 }
+.animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
-}
-
-/* アクセシビリティ: 視覚過敏・前庭障害のユーザー向け (WCAG 2.3.3) */
+/* アクセシビリティ */
 @media (prefers-reduced-motion: reduce) {
-  .animate-pulse-slow,
-  .animate-ping,
-  .animate-pulse {
-    animation: none;
-  }
-
-  *,
-  *::before,
-  *::after {
+  .animate-pulse-slow, .animate-ping, .animate-pulse { animation: none; }
+  *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
