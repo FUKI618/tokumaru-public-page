@@ -48,7 +48,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
       <span class="text-white font-bold text-sm">徳丸商会</span>
     </a>
     <div class="flex items-center gap-4">
-      <nav class="hidden md:flex items-center gap-6 text-[11px] text-white/40 tracking-wider uppercase">
+      <nav class="hidden md:flex items-center gap-6 text-xs text-white/40 tracking-wider uppercase">
         <a href={sectionPath("service")} class="hover:text-brass transition-colors">サービス</a>
         <a href={sectionPath("items")} class="hover:text-brass transition-colors">買取品目</a>
         <a href={sectionPath("results")} class="hover:text-brass transition-colors">実績</a>
@@ -56,7 +56,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
       </nav>
       <div class="flex items-center gap-2">
         <a href="tel:052-990-3968" class="text-white/50 hover:text-white text-xs transition-colors hidden sm:block">052-990-3968</a>
-        <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer" class="bg-brass text-ink text-[11px] font-bold px-3.5 py-1.5 rounded-sm hover:bg-brass-light transition-colors">無料査定</a>
+        <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer" class="bg-brass text-ink text-xs font-bold px-3.5 py-1.5 rounded-sm hover:bg-brass-light transition-colors">無料査定</a>
       </div>
     </div>
   </div>
@@ -71,13 +71,13 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
   <div class="absolute -right-10 bottom-0 text-[15rem] md:text-[25rem] font-serif font-bold text-white/[0.015] leading-none select-none pointer-events-none" aria-hidden="true">徳</div>
 
   <div class="relative max-w-7xl mx-auto px-5 pt-24 pb-16 md:pt-36 md:pb-24">
-    <p class="text-brass/80 text-[10px] md:text-[11px] tracking-[0.4em] mb-8 uppercase">名古屋 出張買取サービス</p>
+    <p class="text-brass/80 text-xs md:text-xs tracking-[0.4em] mb-8 uppercase">名古屋 出張買取サービス</p>
 
     <h1 class="font-serif text-[2.2rem] md:text-[4rem] lg:text-[5rem] font-bold leading-[1.1] mb-8 max-w-3xl">
       不用品を、<br /><span class="text-brass">価値</span>に変える。
     </h1>
 
-    <p class="text-white/45 text-sm md:text-base leading-[2] mb-12 max-w-lg">
+    <p class="text-white/50 text-sm md:text-base leading-[2] mb-12 max-w-lg">
       中古家電・家具・ブランド品をご自宅でその場で査定。愛知県名古屋市を中心に、出張費無料・即日対応でお伺いします。
     </p>
 
@@ -85,11 +85,11 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
     <div class="flex flex-wrap gap-6 md:gap-14 mb-12">
       <div>
         <p class="font-serif text-4xl md:text-6xl font-bold text-white leading-none">1,200<span class="text-brass text-xl">+</span></p>
-        <p class="text-white/25 text-[10px] mt-2 tracking-wider">累計買取件数</p>
+        <p class="text-white/25 text-xs mt-2 tracking-wider">累計買取件数</p>
       </div>
       <div>
         <p class="font-serif text-4xl md:text-6xl font-bold text-white leading-none">98<span class="text-brass text-xl">%</span></p>
-        <p class="text-white/25 text-[10px] mt-2 tracking-wider">お客様満足度</p>
+        <p class="text-white/25 text-xs mt-2 tracking-wider">お客様満足度</p>
       </div>
     </div>
 
@@ -106,7 +106,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
       </a>
     </div>
 
-    <p class="text-white/20 text-[10px] mt-5 tracking-wide">出張費0円 / 査定のみOK / キャンセル無料 / 9:00-21:00 年中無休</p>
+    <p class="text-white/20 text-xs mt-5 tracking-wide">出張費0円 / 査定のみOK / キャンセル無料 / 9:00-21:00 年中無休</p>
   </div>
 </section>
 
@@ -120,7 +120,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
     ].map((p) => (
       <div class="py-6 md:py-10 text-center">
         <p class="font-serif text-xl md:text-3xl font-bold text-ink">{p.big}</p>
-        <p class="text-graphite-light text-[10px] md:text-xs mt-1">{p.sub}</p>
+        <p class="text-graphite-light text-xs md:text-xs mt-1">{p.sub}</p>
       </div>
     ))}
   </div>
@@ -131,11 +131,11 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
   <div class="max-w-6xl mx-auto px-5">
     <div class="md:grid md:grid-cols-5 md:gap-16">
       <div class="md:col-span-2 mb-10 md:mb-0">
-        <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Service</p>
+        <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Service</p>
         <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-5">
           なぜ<br />徳丸商会が<br />選ばれるのか
         </h2>
-        <p class="text-graphite-light text-sm leading-[2]">
+        <p class="text-graphite-light text-sm md:text-base leading-[2]">
           出張買取とは、ご自宅にスタッフが訪問し不用品をその場で査定・買取するサービスです。
         </p>
       </div>
@@ -151,7 +151,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
               <span class="font-serif text-3xl font-bold text-sand-dark group-hover:text-brass transition-colors">{s.n}</span>
               <div>
                 <h3 class="font-bold text-ink text-base md:text-lg mb-2">{s.title}</h3>
-                <p class="text-graphite-light text-sm leading-[1.9]">{s.text}</p>
+                <p class="text-graphite-light text-sm md:text-base leading-[1.9]">{s.text}</p>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 <!-- ═══ 買取アイテム（画像グリッド）═══ -->
 <section id="items" class="py-20 md:py-32 bg-ink text-white">
   <div class="max-w-7xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Purchase Items</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Purchase Items</p>
     <div class="md:flex md:items-end md:justify-between mb-10 md:mb-14">
       <h2 class="font-serif text-2xl md:text-4xl font-bold leading-[1.2] mb-4 md:mb-0">
         高価買取<br />対応アイテム
@@ -174,21 +174,21 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
       {buyItems.map((item) => (
-        <div class="group relative bg-ink-lighter rounded-sm overflow-hidden aspect-square flex items-center justify-center p-6 hover:bg-ink-light transition-colors">
+        <div class="group relative rounded overflow-hidden aspect-square flex items-center justify-center p-8 hover:scale-[1.02] transition-transform duration-300" style="background-color: #f5f0e8;">
           <img src={item.img} alt={`${item.name}の買取`} width="200" height="200"
-            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-          <p class="absolute bottom-3 left-3 text-white/70 text-xs font-bold">{item.name}</p>
+            class="w-full h-full object-contain drop-shadow-md" loading="lazy" />
+          <p class="absolute bottom-0 inset-x-0 bg-ink/80 text-white text-xs font-bold text-center py-2">{item.name}</p>
         </div>
       ))}
     </div>
-    <p class="text-white/20 text-[10px] mt-6">ゲーム機・香水・高級家具ほか、上記以外のお品物もお気軽にご相談ください</p>
+    <p class="text-white/20 text-xs mt-6">ゲーム機・香水・高級家具ほか、上記以外のお品物もお気軽にご相談ください</p>
   </div>
 </section>
 
 <!-- ═══ 買取実績 ═══ -->
 <section id="results" class="py-20 md:py-32">
   <div class="max-w-6xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Track Record</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Track Record</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-10 md:mb-14">
       高額買取実績
     </h2>
@@ -198,7 +198,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
           <div class="aspect-[4/3] overflow-hidden bg-sand rounded-sm mb-4">
             <img src={r.image} alt={`${r.name}の買取実績`} width="400" height="300" class="w-full h-full object-cover" loading="lazy" />
           </div>
-          <p class="text-graphite-light text-[10px] tracking-wider uppercase">{r.detail}</p>
+          <p class="text-graphite-light text-xs tracking-wider uppercase">{r.detail}</p>
           <p class="text-ink font-bold text-sm mt-0.5">{r.name}</p>
           <p class="font-serif text-brass-dark text-2xl font-bold mt-1">¥{r.price}<span class="text-sm text-graphite-light font-normal">〜</span></p>
         </div>
@@ -210,16 +210,16 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 <!-- ═══ ビフォーアフター ═══ -->
 <section class="py-20 md:py-32 bg-sand">
   <div class="max-w-6xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Before &amp; After</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Before &amp; After</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-10 md:mb-14">まるっと回収</h2>
     <div class="grid grid-cols-2 gap-3 md:gap-6 max-w-4xl">
       <div>
         <div class="overflow-hidden rounded-sm"><img src={beforeImg} alt="買取前" width="600" height="400" class="w-full" loading="lazy" /></div>
-        <p class="text-graphite-light text-[10px] tracking-wider uppercase mt-2">Before</p>
+        <p class="text-graphite-light text-xs tracking-wider uppercase mt-2">Before</p>
       </div>
       <div>
         <div class="overflow-hidden rounded-sm"><img src={afterImg} alt="買取後" width="600" height="400" class="w-full" loading="lazy" /></div>
-        <p class="text-graphite-light text-[10px] tracking-wider uppercase mt-2">After</p>
+        <p class="text-graphite-light text-xs tracking-wider uppercase mt-2">After</p>
       </div>
     </div>
   </div>
@@ -228,33 +228,33 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 <!-- ═══ お客様の声 ═══ -->
 <section id="testimonials" class="py-20 md:py-32">
   <div class="max-w-6xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Voice</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Voice</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-10 md:mb-14">お客様の声</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       {testimonials.map((t) => (
         <div class="border-l-2 border-brass/30 pl-5">
-          <blockquote class="text-graphite text-sm leading-[2] mb-4">{t.text}</blockquote>
+          <blockquote class="text-graphite text-sm md:text-base leading-[2] mb-4">{t.text}</blockquote>
           <p class="text-graphite-light text-xs">{t.area}　{t.name}</p>
         </div>
       ))}
     </div>
-    <p class="text-center text-graphite-light text-[10px] mt-10">お客様満足度 <strong class="text-ink">98%</strong>（自社調べ）</p>
+    <p class="text-center text-graphite-light text-xs mt-10">お客様満足度 <strong class="text-ink">98%</strong>（自社調べ）</p>
   </div>
 </section>
 
 <!-- ═══ 対応エリア ═══ -->
 <section id="area" class="py-20 md:py-32 bg-sand">
   <div class="max-w-6xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Area</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Area</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-10 md:mb-14">対応エリア</h2>
     <div class="md:flex md:gap-20">
       <div class="mb-8 md:mb-0">
         <h3 class="text-ink font-bold text-xs tracking-wider mb-4">名古屋市（16区）</h3>
-        <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-graphite-light text-sm">{areas.map((w) => <span>{w}</span>)}</div>
+        <div class="flex flex-wrap gap-x-4 gap-y-2 text-graphite-light text-sm md:text-base">{areas.map((w) => <span>{w}</span>)}</div>
       </div>
       <div>
         <h3 class="text-ink font-bold text-xs tracking-wider mb-4">近郊エリア</h3>
-        <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-graphite-light text-sm">{nearby.map((a) => <span>{a}</span>)}</div>
+        <div class="flex flex-wrap gap-x-4 gap-y-2 text-graphite-light text-sm md:text-base">{nearby.map((a) => <span>{a}</span>)}</div>
       </div>
     </div>
   </div>
@@ -263,17 +263,17 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 <!-- ═══ FAQ ═══ -->
 <section id="faq" class="py-20 md:py-32">
   <div class="max-w-3xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">FAQ</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">FAQ</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold text-ink leading-[1.2] mb-10 md:mb-14">よくあるご質問</h2>
     <div class="divide-y divide-sand-dark">
       {faqs.map((faq) => (
         <div x-data="{ open: false }">
           <button x-on:click="open = !open" class="w-full flex items-start justify-between gap-4 py-6 text-left" x-bind:aria-expanded="open.toString()">
-            <span class="text-ink font-bold text-sm leading-relaxed">{faq.question}</span>
+            <span class="text-ink font-bold text-sm md:text-base leading-relaxed">{faq.question}</span>
             <span class="text-brass text-lg flex-shrink-0 transition-transform duration-300 leading-none" x-bind:class="open && 'rotate-45'">+</span>
           </button>
           <div x-show="open" x-transition class="pb-6" style="display: none;">
-            <p class="text-graphite-light text-sm leading-[2]">{faq.answer}</p>
+            <p class="text-graphite-light text-sm md:text-base leading-[2]">{faq.answer}</p>
           </div>
         </div>
       ))}
@@ -285,7 +285,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
 <section id="contact" class="py-24 md:py-36 bg-ink text-white text-center relative overflow-hidden">
   <div class="absolute inset-0 text-[20rem] font-serif font-bold text-white/[0.01] leading-none flex items-center justify-center select-none pointer-events-none" aria-hidden="true">買取</div>
   <div class="relative max-w-2xl mx-auto px-5">
-    <p class="text-brass text-[10px] tracking-[0.3em] mb-4 uppercase">Contact</p>
+    <p class="text-brass text-xs tracking-[0.3em] mb-4 uppercase">Contact</p>
     <h2 class="font-serif text-2xl md:text-4xl font-bold leading-snug mb-5">
       まずは、お気軽に。
     </h2>
@@ -299,7 +299,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
       </a>
       <a href="tel:052-990-3968" class="inline-flex items-center justify-center gap-2 text-white/40 hover:text-white text-sm px-8 py-4 border border-white/10 hover:border-white/25 rounded-sm transition-all">052-990-3968</a>
     </div>
-    <p class="text-white/15 text-[10px]">受付 9:00-21:00 年中無休 ｜ 古物商許可 第541042309800号</p>
+    <p class="text-white/15 text-xs">受付 9:00-21:00 年中無休 ｜ 古物商許可 第541042309800号</p>
   </div>
 </section>
 
@@ -313,18 +313,18 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
         <img src={logoUrl} alt="徳丸商会" width="24" height="24" class="w-6 h-6" style="filter: drop-shadow(0 0 2px rgba(184,146,74,0.3));" />
         <span class="text-white/60 font-bold text-xs">徳丸商会</span>
       </div>
-      <p class="text-[10px]">名古屋市・近郊エリアの出張買取</p>
-      <p class="text-[10px]">古物商許可 第541042309800号</p>
+      <p class="text-xs">名古屋市・近郊エリアの出張買取</p>
+      <p class="text-xs">古物商許可 第541042309800号</p>
     </div>
-    <div class="flex gap-12 text-[11px]">
+    <div class="flex gap-12 text-xs">
       <div>
-        <p class="text-white/40 text-[9px] tracking-[0.2em] uppercase mb-3">Contact</p>
+        <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-3">Contact</p>
         <a href="tel:052-990-3968" class="block hover:text-white/60 transition-colors">052-990-3968</a>
         <p>9:00-21:00（年中無休）</p>
         <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer" class="hover:text-white/60 transition-colors">LINE公式</a>
       </div>
       <div>
-        <p class="text-white/40 text-[9px] tracking-[0.2em] uppercase mb-3">Pages</p>
+        <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-3">Pages</p>
         <nav class="flex flex-col gap-1">
           <a href={sectionPath("service")} class="hover:text-white/60 transition-colors">サービス</a>
           <a href={sectionPath("items")} class="hover:text-white/60 transition-colors">買取品目</a>
@@ -333,7 +333,7 @@ const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市
       </div>
     </div>
   </div>
-  <div class="max-w-6xl mx-auto px-5 mt-10 pt-6 border-t border-white/5 pb-16 md:pb-0 text-center text-[9px] text-white/10">
+  <div class="max-w-6xl mx-auto px-5 mt-10 pt-6 border-t border-white/5 pb-16 md:pb-0 text-center text-xs text-white/10">
     &copy; {new Date().getFullYear()} 徳丸商会
   </div>
 </footer>
