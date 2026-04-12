@@ -1,42 +1,386 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import PainPoints from "../components/PainPoints.astro";
-import Urgency from "../components/Urgency.astro";
-import Service from "../components/Service.astro";
-import Process from "../components/Process.astro";
-import CTASection from "../components/CTASection.astro";
-import Items from "../components/Items.astro";
-import Results from "../components/Results.astro";
-import BeforeAfter from "../components/BeforeAfter.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Area from "../components/Area.astro";
-import FAQ from "../components/FAQ.astro";
-import Footer from "../components/Footer.astro";
-import FloatingCTA from "../components/FloatingCTA.astro";
+import { assetPath, homePath, sectionPath, privacyPolicyPath } from "../lib/site";
+import { faqs } from "../data/faq";
+
+const logoUrl = assetPath("logo.png");
+const results = [
+  { name: "冷蔵庫", detail: "大型 500L以上", price: "39,000", image: assetPath("images/results/refrigerator.jpg") },
+  { name: "洗濯機", detail: "ドラム式", price: "24,500", image: assetPath("images/results/washing-machine.jpg") },
+  { name: "エアコン", detail: "取外し込み", price: "21,000", image: assetPath("images/results/aircon.jpg") },
+  { name: "テレビ", detail: "55インチ", price: "17,000", image: assetPath("images/results/tv.jpg") },
+];
+const beforeImg = assetPath("images/before.png");
+const afterImg = assetPath("images/after.png");
+const testimonials = [
+  { text: "引越し前日に慌てて電話しましたが、2時間後には全部片付きました。思った以上の金額で買い取ってもらえて助かりました。", name: "T.S様", area: "名古屋市中区" },
+  { text: "LINEで写真を送ったらすぐに概算が出て、翌日には訪問してもらえました。重い冷蔵庫の搬出も手際よくて、お願いして本当によかったです。", name: "M.K様", area: "名古屋市緑区" },
+  { text: "他社で断られた古い家具も査定してくれて、値段がついたのは驚きでした。スタッフの方も丁寧で、家族にも勧めています。", name: "Y.N様", area: "あま市" },
+];
+const areas = ["千種区","東区","北区","西区","中村区","中区","昭和区","瑞穂区","熱田区","中川区","港区","南区","守山区","緑区","名東区","天白区"];
+const nearby = ["あま市","清須市","北名古屋市","津島市","愛西市","弥富市","東海市","大府市","刈谷市","豊明市","四日市市"];
 ---
 
 <Layout
   title="名古屋の出張買取なら徳丸商会｜家電・家具を高額買取・出張費無料"
   description="名古屋市・近郊エリアの出張買取は徳丸商会へ。家電・家具・ブランド品をその場で現金買取。出張費・査定費0円、最短30分で訪問。052-990-3968"
 >
-  <Header />
-  <main>
-    <Hero />
-    <PainPoints />
-    <Urgency />
-    <Service />
-    <Process />
-    <CTASection id="cta-mid" variant="mid" />
-    <Items />
-    <Results />
-    <BeforeAfter />
-    <Testimonials />
-    <Area />
-    <FAQ />
-    <CTASection id="contact" variant="bottom" />
-  </main>
-  <Footer />
-  <FloatingCTA />
+
+<!-- ═══ HEADER ═══ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-ink/90 backdrop-blur-md border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+    <a href={homePath} class="flex items-center gap-2.5">
+      <img src={logoUrl} alt="徳丸商会" width="32" height="32" class="w-8 h-8" style="filter: drop-shadow(0 0 2px rgba(184,146,74,0.3));" />
+      <span class="text-white font-bold text-sm tracking-wide">徳丸商会</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-xs text-white/50">
+      <a href={sectionPath("service")} class="hover:text-brass transition-colors">サービス</a>
+      <a href={sectionPath("results")} class="hover:text-brass transition-colors">買取実績</a>
+      <a href={sectionPath("faq")} class="hover:text-brass transition-colors">よくある質問</a>
+      <a href={sectionPath("contact")} class="hover:text-brass transition-colors">お問い合わせ</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="tel:052-990-3968" class="flex items-center gap-1.5 text-white/70 hover:text-white text-xs transition-colors" aria-label="電話">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="hidden sm:inline">052-990-3968</span>
+      </a>
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer" class="bg-line text-white text-xs font-bold px-3 py-1.5 rounded transition-opacity hover:opacity-90" aria-label="LINE査定">LINE</a>
+    </div>
+  </div>
+</header>
+
+<main class="pt-14">
+
+<!-- ═══ HERO ═══ -->
+<section class="bg-ink text-white min-h-[85vh] md:min-h-[90vh] flex items-center relative overflow-hidden">
+  <!-- Decorative large text -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 text-[12rem] md:text-[20rem] font-serif font-bold text-white/[0.02] leading-none select-none pointer-events-none tracking-tighter" aria-hidden="true">
+    買取
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 py-20 md:py-0 w-full">
+    <div class="max-w-2xl">
+      <p class="text-brass text-[10px] md:text-xs tracking-[0.3em] mb-6 uppercase">Tokumaru Shokai — Nagoya</p>
+
+      <h1 class="font-serif text-[2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold leading-[1.15] mb-6 tracking-tight">
+        不用品を、<br />
+        <span class="text-brass">価値</span>に変える。
+      </h1>
+
+      <p class="text-white/50 text-sm md:text-base leading-[2] mb-10 max-w-md">
+        名古屋市を中心に、ご自宅まで無料で出張。家電・家具・ブランド品をその場で査定し、現金でお支払いします。
+      </p>
+
+      <!-- Stats row -->
+      <div class="flex gap-8 md:gap-12 mb-10 pb-10 border-b border-white/10">
+        <div>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-brass">1,200<span class="text-lg">+</span></p>
+          <p class="text-white/30 text-[10px] mt-1">累計買取件数</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-brass">98<span class="text-lg">%</span></p>
+          <p class="text-white/30 text-[10px] mt-1">お客様満足度</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-brass">¥0</p>
+          <p class="text-white/30 text-[10px] mt-1">出張費・査定費</p>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-brass hover:bg-brass-light text-ink font-bold text-sm px-7 py-4 rounded-sm transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 0 1-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595a.63.63 0 0 1 .495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          無料査定を申し込む
+        </a>
+        <a href="tel:052-990-3968"
+          class="inline-flex items-center justify-center gap-2 text-white/60 hover:text-white text-sm px-7 py-4 border border-white/15 hover:border-white/30 rounded-sm transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          052-990-3968
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROMISES ═══ -->
+<section class="py-16 md:py-24 bg-sand">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-sand-dark">
+      {[
+        { num: "30", unit: "分", label: "最短訪問時間", desc: "お電話一本でスタッフが即日駆けつけます" },
+        { num: "0", unit: "円", label: "出張費・見積もり", desc: "査定だけでも無料。キャンセル料もかかりません" },
+        { num: "即日", unit: "", label: "現金払い", desc: "査定後、その場で現金にてお支払いします" },
+      ].map((item) => (
+        <div class="bg-sand-light p-8 md:p-12 text-center">
+          <p class="font-serif text-4xl md:text-5xl font-bold text-ink leading-none mb-1">
+            {item.num}<span class="text-lg text-brass">{item.unit}</span>
+          </p>
+          <p class="text-graphite font-bold text-sm mb-2">{item.label}</p>
+          <p class="text-graphite-light text-xs">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE ═══ -->
+<section id="service" class="py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="md:flex md:gap-20">
+      <div class="md:w-1/3 mb-10 md:mb-0 md:sticky md:top-24 md:self-start">
+        <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Service</p>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-4">
+          出張買取とは
+        </h2>
+        <p class="text-graphite-light text-sm leading-[2]">
+          お客様のご自宅にスタッフが訪問し、不用品をその場で査定・買取するサービスです。
+        </p>
+      </div>
+      <div class="md:w-2/3">
+        <div class="space-y-0">
+          {[
+            { title: "査定は完全無料", text: "出張費・見積もり・キャンセル料、すべて0円。買取が成立しなくても費用はかかりません。まずは気軽にお試しください。" },
+            { title: "最短30分で即日訪問", text: "お電話一本でスタッフが駆けつけます。引越し直前や急な片付けにも対応。お客様のご都合に合わせてスケジュール調整も可能です。" },
+            { title: "その場で現金払い", text: "査定後、その場で現金をお渡し。後日振込を待つ必要はありません。お品物の価値をすぐに現金に換えられます。" },
+            { title: "搬出もすべてお任せ", text: "冷蔵庫やタンスなどの重量物も、スタッフが丁寧に搬出。養生シートで壁や床を保護し、傷をつけずにお運びします。" },
+          ].map((item, i) => (
+            <div class="py-8 border-b border-sand-dark">
+              <div class="flex items-baseline gap-4 mb-3">
+                <span class="text-brass/30 font-serif text-2xl font-bold">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="font-bold text-ink text-base md:text-lg">{item.title}</h3>
+              </div>
+              <p class="text-graphite-light text-sm leading-[2] pl-12">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="py-20 md:py-32 bg-ink text-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Track Record</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold leading-snug mb-12 md:mb-16">
+      高額買取実績
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {results.map((item) => (
+        <div class="group">
+          <div class="aspect-[4/3] overflow-hidden mb-4">
+            <img src={item.image} alt={`${item.name}の買取実績`} width="400" height="300"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" loading="lazy" />
+          </div>
+          <p class="text-white/40 text-[10px] tracking-wider uppercase mb-1">{item.detail}</p>
+          <p class="text-white font-bold text-sm mb-1">{item.name}</p>
+          <p class="font-serif text-brass text-xl font-bold">¥{item.price}<span class="text-xs font-normal text-white/30">〜</span></p>
+        </div>
+      ))}
+    </div>
+    <p class="text-white/20 text-[10px] mt-8">※買取相場はお品物の状態・年式・メーカーにより異なります</p>
+  </div>
+</section>
+
+<!-- ═══ BEFORE/AFTER ═══ -->
+<section id="before-after" class="py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Before &amp; After</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-12 md:mb-16">
+      まるっと回収の実例
+    </h2>
+    <div class="grid grid-cols-2 gap-3 md:gap-6 max-w-4xl">
+      <div>
+        <div class="overflow-hidden mb-2"><img src={beforeImg} alt="買取前" width="600" height="400" class="w-full h-auto" loading="lazy" /></div>
+        <p class="text-graphite-light text-[10px] tracking-wider uppercase">Before</p>
+      </div>
+      <div>
+        <div class="overflow-hidden mb-2"><img src={afterImg} alt="買取後" width="600" height="400" class="w-full h-auto" loading="lazy" /></div>
+        <p class="text-graphite-light text-[10px] tracking-wider uppercase">After</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials" class="py-20 md:py-32 bg-sand">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Voice</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-12 md:mb-16">
+      お客様の声
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      {testimonials.map((t) => (
+        <div>
+          <p class="font-serif text-5xl text-brass/20 leading-none mb-3" aria-hidden="true">"</p>
+          <blockquote class="text-graphite text-sm leading-[2] mb-4">
+            {t.text}
+          </blockquote>
+          <p class="text-graphite-light text-xs">{t.area}　{t.name}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-center text-graphite-light text-xs mt-12 pt-8 border-t border-sand-dark">
+      お客様満足度 <span class="text-ink font-bold">98%</span>（自社調べ）
+    </p>
+  </div>
+</section>
+
+<!-- ═══ ITEMS ═══ -->
+<section id="items" class="py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Purchase Items</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-8">
+      買取対象
+    </h2>
+    <p class="text-graphite text-sm leading-[2] max-w-xl mb-8">
+      中古家電・家具からブランド品・貴金属まで、幅広いジャンルのお品物を高価買取いたします。
+    </p>
+    <div class="flex flex-wrap gap-x-1 gap-y-2 text-sm text-graphite-light">
+      {["冷蔵庫","洗濯機","エアコン","テレビ","腕時計","ブランドバッグ","貴金属","ゲーム機","楽器","電子レンジ","香水","高級家具"].map((item, i, arr) => (
+        <><span class="text-ink font-medium">{item}</span>{i < arr.length - 1 && <span class="text-graphite-light/30 mx-1">|</span>}</>
+      ))}
+    </div>
+    <p class="text-graphite-light text-[10px] mt-6">上記以外のリサイクル・中古品もお気軽にご相談ください</p>
+  </div>
+</section>
+
+<!-- ═══ AREA ═══ -->
+<section id="area" class="py-20 md:py-32 bg-sand">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Area</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-10 md:mb-14">
+      対応エリア
+    </h2>
+    <div class="md:flex md:gap-16">
+      <div class="mb-8 md:mb-0">
+        <h3 class="text-ink font-bold text-xs tracking-wider uppercase mb-4">名古屋市（16区）</h3>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-graphite-light text-sm">{areas.map((w) => <span>{w}</span>)}</div>
+      </div>
+      <div>
+        <h3 class="text-ink font-bold text-xs tracking-wider uppercase mb-4">近郊エリア</h3>
+        <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-graphite-light text-sm">{nearby.map((a) => <span>{a}</span>)}</div>
+        <p class="text-graphite-light text-[10px] mt-4">上記以外の愛知県内エリアもご相談ください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq" class="py-20 md:py-32">
+  <div class="max-w-3xl mx-auto px-5">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">FAQ</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold text-ink leading-snug mb-10 md:mb-14">
+      よくあるご質問
+    </h2>
+    <div class="divide-y divide-sand-dark">
+      {faqs.map((faq) => (
+        <div x-data="{ open: false }">
+          <button x-on:click="open = !open" class="w-full flex items-start justify-between gap-4 py-6 text-left group" x-bind:aria-expanded="open.toString()">
+            <span class="text-ink font-bold text-sm leading-relaxed group-hover:text-brass transition-colors">{faq.question}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-graphite-light flex-shrink-0 mt-1 transition-transform duration-300" x-bind:class="open && 'rotate-45'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" class="pb-6" style="display: none;">
+            <p class="text-graphite-light text-sm leading-[2]">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT CTA ═══ -->
+<section id="contact" class="py-20 md:py-32 bg-ink text-white">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <p class="text-brass text-[10px] tracking-[0.3em] mb-3 uppercase">Contact</p>
+    <h2 class="font-serif text-2xl md:text-4xl font-bold leading-snug mb-4">
+      まずは、お気軽に。
+    </h2>
+    <p class="text-white/40 text-sm mb-10">
+      「いくらになるか聞いてみたい」だけでも大歓迎です。しつこい営業は一切ありません。
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 mb-6">
+      <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-brass hover:bg-brass-light text-ink font-bold text-sm px-8 py-4 rounded-sm transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 0 1-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595a.63.63 0 0 1 .495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        無料査定を申し込む
+      </a>
+      <a href="tel:052-990-3968"
+        class="inline-flex items-center justify-center gap-2 text-white/50 hover:text-white text-sm px-8 py-4 border border-white/15 hover:border-white/30 rounded-sm transition-all">
+        052-990-3968
+      </a>
+    </div>
+    <p class="text-white/20 text-[10px]">受付 9:00〜21:00（年中無休）｜古物商許可 第541042309800号</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-ink-light text-white/35 py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="md:flex md:justify-between md:items-start gap-12 mb-12">
+      <div class="mb-8 md:mb-0">
+        <div class="flex items-center gap-2.5 mb-3">
+          <img src={logoUrl} alt="徳丸商会" width="28" height="28" class="w-7 h-7" style="filter: drop-shadow(0 0 2px rgba(184,146,74,0.3));" />
+          <span class="text-white font-bold text-sm">徳丸商会</span>
+        </div>
+        <p class="text-xs leading-relaxed">名古屋市・近郊エリアの出張買取サービス</p>
+        <p class="text-[10px] mt-1">古物商許可番号：第541042309800号</p>
+      </div>
+      <div class="flex gap-12 text-xs">
+        <div>
+          <p class="text-white/50 text-[10px] tracking-[0.2em] uppercase mb-3">Contact</p>
+          <p class="mb-1"><a href="tel:052-990-3968" class="hover:text-white transition-colors">052-990-3968</a></p>
+          <p class="mb-1">9:00〜21:00（年中無休）</p>
+          <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LINE公式</a>
+        </div>
+        <div>
+          <p class="text-white/50 text-[10px] tracking-[0.2em] uppercase mb-3">Pages</p>
+          <nav class="flex flex-col gap-1.5">
+            <a href={sectionPath("service")} class="hover:text-white transition-colors">サービス</a>
+            <a href={sectionPath("results")} class="hover:text-white transition-colors">買取実績</a>
+            <a href={sectionPath("faq")} class="hover:text-white transition-colors">よくある質問</a>
+            <a href={privacyPolicyPath} class="hover:text-white transition-colors">プライバシーポリシー</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-8 pb-16 md:pb-0 text-center text-[10px] text-white/15">
+      &copy; {new Date().getFullYear()} 徳丸商会
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING CTA (Mobile) ═══ -->
+<div
+  x-data="{ show: false }"
+  x-init="window.addEventListener('scroll', () => { show = window.scrollY > 400 })"
+  x-show="show"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="translate-y-full"
+  x-transition:enter-end="translate-y-0"
+  x-transition:leave="transition ease-in duration-200"
+  x-transition:leave-start="translate-y-0"
+  x-transition:leave-end="translate-y-full"
+  class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-ink/95 backdrop-blur-md border-t border-white/5"
+  style="display: none;"
+>
+  <div class="flex gap-2 px-4 py-3 max-w-lg mx-auto">
+    <a href="https://lin.ee/j4wK9IM" target="_blank" rel="noopener noreferrer"
+      class="flex-1 flex items-center justify-center gap-2 bg-brass text-ink font-bold py-3 rounded-sm text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 0 1-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595a.63.63 0 0 1 .495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINE査定
+    </a>
+    <a href="tel:052-990-3968"
+      class="flex-1 flex items-center justify-center gap-2 border border-white/20 text-white font-bold py-3 rounded-sm text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      電話する
+    </a>
+  </div>
+</div>
+
 </Layout>
