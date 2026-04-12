@@ -26,16 +26,16 @@ const steps = [
     <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-4">
       ご依頼の流れ
     </h2>
-    <p class="text-center text-warm-gray mb-8 md:mb-12">
+    <p class="text-center text-warm-gray text-sm md:text-base mb-8 md:mb-12">
       かんたん3ステップで完了します
     </p>
 
-    <div class="space-y-8">
+    <div class="space-y-5 md:space-y-8">
       {steps.map((step, index) => (
-        <div class="flex gap-6 items-start">
+        <div class="flex gap-4 md:gap-6 items-start">
           {/* Step Number Circle */}
           <div class="flex-shrink-0">
-            <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-gold shadow-lg">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-navy rounded-full flex items-center justify-center text-gold shadow-lg">
               <Fragment set:html={step.icon} />
             </div>
             {index < steps.length - 1 && (
@@ -44,14 +44,14 @@ const steps = [
           </div>
 
           {/* Content */}
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-cream-dark flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="text-sm font-bold text-gold bg-gold/10 px-3 py-1 rounded-full">
+          <div class="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-cream-dark flex-1">
+            <div class="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
+              <span class="text-xs md:text-sm font-bold text-gold bg-gold/10 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full">
                 STEP {step.number}
               </span>
-              <h3 class="font-bold text-navy text-lg">{step.title}</h3>
+              <h3 class="font-bold text-navy text-[0.95rem] md:text-lg">{step.title}</h3>
             </div>
-            <p class="text-warm-gray leading-relaxed">{step.description}</p>
+            <p class="text-warm-gray text-xs md:text-base leading-[1.8]">{step.description}</p>
           </div>
         </div>
       ))}

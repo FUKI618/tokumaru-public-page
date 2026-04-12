@@ -38,23 +38,23 @@ const painPoints = [
     <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-4">
       こんなお悩みありませんか？
     </h2>
-    <p class="text-center text-warm-gray-light mb-8 md:mb-12 max-w-2xl mx-auto">
-      一つでも当てはまったら、まずは無料相談を
+    <p class="text-center text-warm-gray-light text-sm md:text-base mb-8 md:mb-12">
+      一つでも当てはまったら、<br class="md:hidden" />まずは無料相談を
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {painPoints.map((item) => (
-        <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-cream-dark group">
-          <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center text-navy mb-4 group-hover:bg-navy/10 transition-colors">
+        <div class="bg-white rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow border border-cream-dark group">
+          <div class="w-12 h-12 md:w-14 md:h-14 bg-navy/5 rounded-xl flex items-center justify-center text-navy mb-3 md:mb-4 group-hover:bg-navy/10 transition-colors">
             <Fragment set:html={item.icon} />
           </div>
-          <p class="font-bold text-navy text-base mb-3 leading-snug">{item.pain}</p>
+          <p class="font-bold text-navy text-[0.9rem] md:text-base mb-2 md:mb-3 leading-normal">{item.pain}</p>
           <div class="flex items-start gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-cta flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5 text-cta flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
               <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
-            <p class="text-warm-gray text-sm leading-relaxed">{item.solution}</p>
+            <p class="text-warm-gray text-xs md:text-sm leading-relaxed">{item.solution}</p>
           </div>
         </div>
       ))}
