@@ -1,0 +1,59 @@
+---
+import SpecializedLP from "../layouts/SpecializedLP.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<SpecializedLP
+  title="名古屋のブランド品・貴金属 出張買取｜徳丸商会"
+  description="名古屋市でブランド品・貴金属・腕時計の出張買取なら徳丸商会。ご自宅で査定、その場で現金払い。出張費0円。052-990-3968"
+  slug="brand"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy via-navy-light to-navy text-white py-12 md:py-20">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <p class="text-gold text-xs md:text-sm font-bold mb-3">ブランド品・貴金属の出張買取</p>
+      <h1 class="text-2xl md:text-5xl font-black leading-tight mb-4">
+        ブランド品・貴金属を<br />
+        <span class="text-gold">高価買取</span>いたします
+      </h1>
+      <p class="text-sm md:text-lg text-white/80 mb-6 leading-relaxed">
+        店舗に持ち込む手間なし。ご自宅でゆっくり査定、納得の価格で現金買取。
+      </p>
+    </div>
+  </section>
+
+  <!-- 買取対象 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">買取対象アイテム</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {["ブランドバッグ", "ブランド財布・小物", "腕時計（ロレックス等）", "金・プラチナ・銀", "ダイヤモンド・宝石", "ブランドアクセサリー", "ブランド衣類・靴", "香水・コスメ", "その他ブランド品"].map((item) => (
+          <div class="bg-cream rounded-xl p-4 text-center">
+            <p class="text-navy font-bold text-sm">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- メリット -->
+  <section class="py-12 md:py-20 bg-cream">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">出張買取のメリット</h2>
+      <div class="space-y-4">
+        {[
+          { title: "店舗に行く必要なし", text: "ご自宅にお伺いするので、重いアクセサリーケースを持ち運ぶ必要がありません。" },
+          { title: "プライバシーが守られる", text: "店頭でのやり取りが不要。ご自宅で安心して査定を受けられます。" },
+          { title: "まとめて査定で高額に", text: "複数点をまとめてご依頼いただくと、総額で高値がつきやすくなります。" },
+        ].map((item) => (
+          <div class="bg-white rounded-xl p-5 border border-cream-dark">
+            <h3 class="font-bold text-navy mb-1">{item.title}</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection id="cta-mid" variant="mid" />
+</SpecializedLP>

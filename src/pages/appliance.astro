@@ -1,0 +1,71 @@
+---
+import SpecializedLP from "../layouts/SpecializedLP.astro";
+import CTASection from "../components/CTASection.astro";
+import { assetPath } from "../lib/site";
+---
+
+<SpecializedLP
+  title="名古屋の冷蔵庫・洗濯機 出張買取｜徳丸商会"
+  description="名古屋市で冷蔵庫・洗濯機・ドラム式洗濯機の出張買取なら徳丸商会。大型家電の搬出もお任せ。出張費0円・その場で現金払い。052-990-3968"
+  slug="appliance"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy via-navy-light to-navy text-white py-12 md:py-20">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <p class="text-gold text-xs md:text-sm font-bold mb-3">冷蔵庫・洗濯機の出張買取専門</p>
+      <h1 class="text-2xl md:text-5xl font-black leading-tight mb-4">
+        冷蔵庫・洗濯機を<br />
+        <span class="text-gold">高価買取</span>いたします
+      </h1>
+      <p class="text-sm md:text-lg text-white/80 mb-6 leading-relaxed">
+        大型家電の搬出もスタッフにお任せ。重い物を運ぶ必要はありません。
+      </p>
+      <div class="flex justify-center gap-4 md:gap-8">
+        <div class="text-center">
+          <p class="text-2xl md:text-3xl font-black text-gold">¥39,000<span class="text-sm">〜</span></p>
+          <p class="text-[10px] md:text-xs text-white/60">冷蔵庫 買取実績</p>
+        </div>
+        <div class="w-px bg-white/20"></div>
+        <div class="text-center">
+          <p class="text-2xl md:text-3xl font-black text-gold">¥24,500<span class="text-sm">〜</span></p>
+          <p class="text-[10px] md:text-xs text-white/60">洗濯機 買取実績</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 買取対象 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">買取対象の家電製品</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {["大型冷蔵庫（400L以上）", "中型冷蔵庫（200〜400L）", "ドラム式洗濯乾燥機", "縦型洗濯機", "二層式洗濯機", "冷凍庫・ワインセラー"].map((item) => (
+          <div class="bg-cream rounded-xl p-4 text-center">
+            <p class="text-navy font-bold text-sm">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- なぜ徳丸商会？ -->
+  <section class="py-12 md:py-20 bg-cream">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">大型家電の買取に強い理由</h2>
+      <div class="space-y-4">
+        {[
+          { title: "搬出は全てお任せ", text: "冷蔵庫や洗濯機の運び出しはスタッフが対応。お部屋の養生も丁寧に行います。" },
+          { title: "製造5年以内なら高額査定", text: "新しい家電ほど高く売れます。買い替え・引越しのタイミングがチャンスです。" },
+          { title: "他社で断られた製品もOK", text: "年式が古い・動作確認が難しい製品でも、まずはご相談ください。" },
+        ].map((item) => (
+          <div class="bg-white rounded-xl p-5 border border-cream-dark">
+            <h3 class="font-bold text-navy mb-1">{item.title}</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection id="cta-mid" variant="mid" />
+</SpecializedLP>

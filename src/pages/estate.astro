@@ -1,0 +1,65 @@
+---
+import SpecializedLP from "../layouts/SpecializedLP.astro";
+import CTASection from "../components/CTASection.astro";
+---
+
+<SpecializedLP
+  title="名古屋の遺品整理・生前整理｜徳丸商会"
+  description="名古屋市で遺品整理・生前整理なら徳丸商会。片付けから買取までワンストップ対応。不用品の買取額で費用を軽減。出張費0円。052-990-3968"
+  slug="estate"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-navy via-navy-light to-navy text-white py-12 md:py-20">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <p class="text-gold text-xs md:text-sm font-bold mb-3">片付けから買取までワンストップ</p>
+      <h1 class="text-2xl md:text-5xl font-black leading-tight mb-4">
+        遺品整理・生前整理を<br />
+        <span class="text-gold">丁寧にサポート</span>
+      </h1>
+      <p class="text-sm md:text-lg text-white/80 mb-6 leading-relaxed">
+        故人の大切なお品物を丁寧に仕分け。価値あるものは買取で費用を軽減します。
+      </p>
+    </div>
+  </section>
+
+  <!-- サービス内容 -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">サービス内容</h2>
+      <div class="space-y-4">
+        {[
+          { title: "遺品の仕分け・整理", text: "残すもの・処分するもの・買取するものを丁寧に仕分けします。" },
+          { title: "不用品の買取", text: "家電・家具・貴金属・ブランド品など、価値あるお品物は現金で買取。処分費用の負担を軽減します。" },
+          { title: "不用品の処分・回収", text: "買取できないお品物もまとめて回収。分別の手間もかかりません。" },
+          { title: "簡易清掃", text: "作業後のお部屋を簡易清掃いたします。" },
+        ].map((item) => (
+          <div class="bg-cream rounded-xl p-5">
+            <h3 class="font-bold text-navy mb-1">{item.title}</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 選ばれる理由 -->
+  <section class="py-12 md:py-20 bg-cream">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">徳丸商会が選ばれる理由</h2>
+      <div class="space-y-4">
+        {[
+          { title: "古物商許可で適正な買取", text: "許可番号：第541042309800号。法令に基づいた適正価格で買取いたします。" },
+          { title: "遠方からでもご依頼可能", text: "お立ち会いが難しい場合も、鍵の受け渡しから作業報告まで全てお任せいただけます。" },
+          { title: "ご家族の気持ちに寄り添います", text: "形見分けのご相談や、思い出の品の取り扱いにも丁寧に対応いたします。" },
+        ].map((item) => (
+          <div class="bg-white rounded-xl p-5 border border-cream-dark">
+            <h3 class="font-bold text-navy mb-1">{item.title}</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection id="cta-mid" variant="mid" />
+</SpecializedLP>
