@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Trust Blue - 信頼・安定・誠実 */
+  --color-navy: #1e3a5f;
+  --color-navy-light: #2a4d7a;
+  --color-navy-dark: #142842;
+
+  /* Action Green - 安心・安全・前向きな行動 */
+  --color-cta: #1a8a6e;
+  --color-cta-light: #22a382;
+
+  /* Gold - 品格・プレミアム・実績 */
+  --color-gold: #c8963e;
+  --color-gold-light: #d4a854;
+
+  /* Warm Ivory - 親近感・居心地のよさ */
+  --color-cream: #f7f5f0;
+  --color-cream-dark: #ede8df;
+
+  /* Text - ウォームグレー（冷たくない） */
+  --color-warm-gray: #4a4540;
+  --color-warm-gray-light: #8a8480;
+
+  /* LINE Official Green */
+  --color-line: #06c755;
+
+  /* Subtle alert (urgency without alarm) */
+  --color-alert: #d4881e;
+  --color-alert-light: #e09a35;
+
+  --font-sans: "Noto Sans JP", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-warm-gray);
+  background-color: #fff;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}

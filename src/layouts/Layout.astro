@@ -1,0 +1,195 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+import "../styles/global.css";
+
+const { title, description } = Astro.props;
+const canonicalUrl = Astro.url.href;
+const siteUrl = Astro.url.origin;
+const ogImage = `${siteUrl}/og-image.png`;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <title>{title}</title>
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="徳丸商会｜名古屋の出張買取" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W493L98W');
+    </script>
+
+    <!-- JSON-LD: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "徳丸商会",
+      "description": "名古屋市・近郊エリアの出張買取サービス。家電・家具・ブランド品をその場で現金買取。出張費・査定費0円。",
+      "telephone": "052-990-3968",
+      "url": siteUrl,
+      "image": ogImage,
+      "priceRange": "$$",
+      "openingHours": "Mo-Su 09:00-21:00",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "名古屋市",
+        "addressRegion": "愛知県",
+        "addressCountry": "JP"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "名古屋市", "containedInPlace": { "@type": "State", "name": "愛知県" } },
+        { "@type": "City", "name": "あま市" },
+        { "@type": "City", "name": "清須市" },
+        { "@type": "City", "name": "北名古屋市" },
+        { "@type": "City", "name": "津島市" },
+        { "@type": "City", "name": "愛西市" },
+        { "@type": "City", "name": "弥富市" },
+        { "@type": "City", "name": "東海市" },
+        { "@type": "City", "name": "大府市" },
+        { "@type": "City", "name": "刈谷市" },
+        { "@type": "City", "name": "豊明市" },
+        { "@type": "City", "name": "四日市市", "containedInPlace": { "@type": "State", "name": "三重県" } }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "出張買取サービス",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "家電出張買取" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "家具出張買取" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ブランド品・貴金属買取" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "不用品まとめて回収" } }
+        ]
+      }
+    })} />
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "出張費や査定費はかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ、出張費・査定費は完全無料です。買取が成立しなかった場合も費用は一切かかりません。お気軽にご依頼ください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どんなものが買取対象ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "冷蔵庫・洗濯機・エアコン・テレビなどの家電、家具、ブランド品、貴金属、腕時計、楽器、ゲーム機など幅広く対応しています。まずはお気軽にお問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "最短どのくらいで来てもらえますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "最短30分でお伺いいたします。お急ぎの場合もお電話一本で迅速に対応いたします。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支払い方法は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "その場で現金にてお支払いいたします。査定後すぐにお渡しできますので、お待ちいただく必要はありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "1点だけでも来てもらえますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、冷蔵庫1台からでも喜んでお伺いいたします。もちろん複数点まとめてのご依頼も歓迎です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "買取とまとめて回収の違いは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "買取は価値のあるお品物に対して現金をお支払いするサービスです。まとめて回収は、買取品と不用品を一括でお引き取りするサービスで、引越し時などに便利です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "予約なしでも対応できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当日のご連絡でも対応可能です。ただし、事前にお電話またはLINEでご連絡いただけるとスムーズにお伺いできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "対応エリア外ですが相談できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "エリア外でも内容によっては対応可能です。まずはお気軽にお電話またはLINEでご相談ください。"
+          }
+        }
+      ]
+    })} />
+  </head>
+  <body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W493L98W"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <slot />
+
+    <!-- Alpine.js -->
+    <script>
+      import Alpine from "alpinejs";
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+  </body>
+</html>
