@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Earth — 信頼と温もり */
-  --color-earth: #2c2420;
-  --color-earth-light: #3d342e;
-  --color-earth-warm: #4a3f38;
+  /* Warm Earth — より深みのある土色 */
+  --color-earth: #1e1814;
+  --color-earth-light: #2e2620;
+  --color-earth-warm: #3d342c;
 
-  /* Parchment — 和紙のような温かみ */
-  --color-paper: #f6f1ea;
-  --color-paper-dark: #ebe4d9;
-  --color-paper-deep: #ddd4c6;
+  /* Parchment — 和紙。少しクリーム寄りに */
+  --color-paper: #f7f3ec;
+  --color-paper-dark: #eee8dc;
+  --color-paper-deep: #e0d7c8;
 
-  /* Persimmon — 柿色。日本的で温かいアクセント */
-  --color-accent: #c4622a;
-  --color-accent-light: #d67940;
+  /* Persimmon — 柿色。少し渋めに */
+  --color-accent: #b85a28;
+  --color-accent-light: #cc6e3a;
 
-  /* Matcha — 落ち着いた行動色 */
-  --color-action: #5a7a5e;
-  --color-action-light: #6d9071;
+  /* Matcha — 深みのある行動色 */
+  --color-action: #4e6e52;
+  --color-action-light: #5f8264;
 
-  /* Sumi — 墨色テキスト */
-  --color-sumi: #2a2522;
-  --color-sumi-light: #5c5550;
-  --color-sumi-lighter: #8a837d;
+  /* Sumi — 墨。より濃く */
+  --color-sumi: #1f1c19;
+  --color-sumi-light: #504a44;
+  --color-sumi-lighter: #7d766f;
 
   --color-line: #06c755;
 
@@ -31,10 +31,10 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 15.5px;
 }
 @media (min-width: 768px) {
-  html { font-size: 17px; }
+  html { font-size: 16.5px; }
 }
 
 html.scroll-ready { scroll-behavior: smooth; }
@@ -44,31 +44,36 @@ body {
   font-family: var(--font-sans);
   color: var(--color-sumi);
   background-color: var(--color-paper);
-  line-height: 1.85;
-  letter-spacing: 0.02em;
+  line-height: 1.9;
+  letter-spacing: 0.025em;
   word-break: auto-phrase;
   overflow-wrap: anywhere;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
 }
 
-.font-serif { font-family: var(--font-serif); }
+.font-serif {
+  font-family: var(--font-serif);
+  font-feature-settings: "palt";
+}
 
 ::selection {
-  background-color: rgba(196, 98, 42, 0.15);
+  background-color: rgba(184, 90, 40, 0.12);
+  color: var(--color-sumi);
 }
 
-/* Staggered fade-in on scroll */
+/* Subtle emerge animation */
 @keyframes emerge {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.emerge { opacity: 0; animation: emerge 0.7s ease-out forwards; }
-.emerge-d1 { animation-delay: 0.1s; }
-.emerge-d2 { animation-delay: 0.2s; }
-.emerge-d3 { animation-delay: 0.3s; }
+.emerge { opacity: 0; animation: emerge 0.6s ease-out forwards; }
 
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Refined image treatment */
+img { image-rendering: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
