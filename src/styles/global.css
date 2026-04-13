@@ -43,6 +43,8 @@ body {
   background-color: var(--color-sand-light);
   letter-spacing: 0.015em;
   line-height: 1.75;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
 }
 
 
