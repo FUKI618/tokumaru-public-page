@@ -266,15 +266,18 @@ const serviceCards = [
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {buyItems.map((item) => (
             <div class="group rounded-[26px] border border-white/8 bg-white/[0.04] p-4 md:p-5 shadow-[0_16px_35px_rgba(0,0,0,0.18)] hover:-translate-y-1 transition-transform duration-300">
-              <div class="aspect-square rounded-[22px] bg-[linear-gradient(180deg,#f7f1e6_0%,#f1e8db_100%)] flex items-center justify-center p-5 overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={`${item.name}の買取`}
-                  width="200"
-                  height="200"
-                  class="w-full h-full object-contain drop-shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
-                  loading="lazy"
-                />
+              <div class="aspect-square rounded-[22px] bg-[linear-gradient(180deg,#f7f1e6_0%,#f1e8db_100%)] p-3 overflow-hidden">
+                <div class="relative flex h-full w-full items-center justify-center rounded-[18px] border border-sand-dark/80 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]">
+                  <div class="pointer-events-none absolute inset-5 rounded-full bg-[radial-gradient(circle,rgba(195,154,81,0.12),transparent_68%)]"></div>
+                  <img
+                    src={item.img}
+                    alt={`${item.name}の買取`}
+                    width="200"
+                    height="200"
+                    class="relative z-10 h-full w-full object-contain p-5 drop-shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <div class="mt-4 flex items-center justify-between gap-3">
                 <p class="text-white font-bold text-sm md:text-base leading-snug">{item.name}</p>
