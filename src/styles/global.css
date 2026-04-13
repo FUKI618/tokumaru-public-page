@@ -1,67 +1,74 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #131920;
-  --color-ink-light: #1b232d;
-  --color-ink-lighter: #26303b;
+  /* Warm Earth — 信頼と温もり */
+  --color-earth: #2c2420;
+  --color-earth-light: #3d342e;
+  --color-earth-warm: #4a3f38;
 
-  --color-sand: #f4ede2;
-  --color-sand-dark: #e5dac9;
-  --color-sand-light: #fbf8f2;
+  /* Parchment — 和紙のような温かみ */
+  --color-paper: #f6f1ea;
+  --color-paper-dark: #ebe4d9;
+  --color-paper-deep: #ddd4c6;
 
-  --color-brass: #c39a51;
-  --color-brass-light: #d9b26b;
-  --color-brass-dark: #8e6930;
+  /* Persimmon — 柿色。日本的で温かいアクセント */
+  --color-accent: #c4622a;
+  --color-accent-light: #d67940;
 
-  --color-sage: #4a7a6a;
-  --color-sage-light: #5e9484;
+  /* Matcha — 落ち着いた行動色 */
+  --color-action: #5a7a5e;
+  --color-action-light: #6d9071;
 
-  --color-graphite: #47423b;
-  --color-graphite-light: #676158;
+  /* Sumi — 墨色テキスト */
+  --color-sumi: #2a2522;
+  --color-sumi-light: #5c5550;
+  --color-sumi-lighter: #8a837d;
 
-  --color-line: #00763a;
+  --color-line: #06c755;
 
   --font-sans: "Noto Sans JP", sans-serif;
   --font-serif: "Shippori Mincho", serif;
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
-  -webkit-font-smoothing: antialiased;
 }
-
 @media (min-width: 768px) {
   html { font-size: 17px; }
 }
 
-section[id] { scroll-margin-top: 5.5rem; }
+html.scroll-ready { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 4rem; }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-graphite);
-  background-color: var(--color-sand-light);
-  letter-spacing: 0.015em;
-  line-height: 1.75;
+  color: var(--color-sumi);
+  background-color: var(--color-paper);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
   word-break: auto-phrase;
   overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
 }
-
 
 .font-serif { font-family: var(--font-serif); }
 
 ::selection {
-  background-color: rgba(195, 154, 81, 0.22);
+  background-color: rgba(196, 98, 42, 0.15);
 }
+
+/* Staggered fade-in on scroll */
+@keyframes emerge {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.emerge { opacity: 0; animation: emerge 0.7s ease-out forwards; }
+.emerge-d1 { animation-delay: 0.1s; }
+.emerge-d2 { animation-delay: 0.2s; }
+.emerge-d3 { animation-delay: 0.3s; }
 
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-up { animation: fade-up 0.8s ease-out both; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -69,4 +76,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+  .emerge { opacity: 1; transform: none; }
 }
