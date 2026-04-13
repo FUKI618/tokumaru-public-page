@@ -1,85 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Earth — より深みのある土色 */
-  --color-earth: #1e1814;
-  --color-earth-light: #2e2620;
-  --color-earth-warm: #3d342c;
+  /* 不用品回収・遺品整理業界カラー */
+  /* メインブルー — 信頼・清潔感 */
+  --color-main: #1a5c8a;
+  --color-main-light: #2474a8;
+  --color-main-dark: #0f4268;
 
-  /* Parchment — 和紙。少しクリーム寄りに */
-  --color-paper: #f7f3ec;
-  --color-paper-dark: #eee8dc;
-  --color-paper-deep: #e0d7c8;
+  /* オレンジ — 行動・元気・即対応 */
+  --color-hot: #e87c1e;
+  --color-hot-light: #f09438;
 
-  /* Persimmon — 柿色。少し渋めに */
-  --color-accent: #b85a28;
-  --color-accent-light: #cc6e3a;
+  /* 明るい背景 */
+  --color-bg: #f8f8f6;
+  --color-bg-dark: #eeeee8;
+  --color-bg-white: #ffffff;
 
-  /* Matcha — 深みのある行動色 */
-  --color-action: #4e6e52;
-  --color-action-light: #5f8264;
-
-  /* Sumi — 墨。より濃く */
-  --color-sumi: #1f1c19;
-  --color-sumi-light: #504a44;
-  --color-sumi-lighter: #7d766f;
+  /* テキスト */
+  --color-text: #2a2a2a;
+  --color-text-light: #666660;
+  --color-text-lighter: #999990;
 
   --color-line: #06c755;
 
   --font-sans: "Noto Sans JP", sans-serif;
-  --font-serif: "Shippori Mincho", serif;
 }
 
-html {
-  font-size: 15.5px;
-}
-@media (min-width: 768px) {
-  html { font-size: 16.5px; }
-}
+html { font-size: 16px; }
+@media (min-width: 768px) { html { font-size: 17px; } }
 
 html.scroll-ready { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 4rem; }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-sumi);
-  background-color: var(--color-paper);
-  line-height: 1.9;
-  letter-spacing: 0.025em;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
   word-break: auto-phrase;
   overflow-wrap: anywhere;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "palt";
 }
 
-.font-serif {
-  font-family: var(--font-serif);
-  font-feature-settings: "palt";
-}
-
-::selection {
-  background-color: rgba(184, 90, 40, 0.12);
-  color: var(--color-sumi);
-}
-
-/* Subtle emerge animation */
-@keyframes emerge {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.emerge { opacity: 0; animation: emerge 0.6s ease-out forwards; }
+::selection { background-color: rgba(232, 124, 30, 0.15); }
 
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-
-/* Refined image treatment */
-img { image-rendering: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
   }
-  .emerge { opacity: 1; transform: none; }
 }
