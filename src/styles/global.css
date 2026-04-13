@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0f1419;
-  --color-ink-light: #1a2029;
-  --color-ink-lighter: #242b35;
+  --color-ink: #131920;
+  --color-ink-light: #1b232d;
+  --color-ink-lighter: #26303b;
 
-  --color-sand: #f5f0e8;
-  --color-sand-dark: #e8e0d4;
-  --color-sand-light: #faf7f2;
+  --color-sand: #f4ede2;
+  --color-sand-dark: #e5dac9;
+  --color-sand-light: #fbf8f2;
 
-  --color-brass: #b8924a;
-  --color-brass-light: #d4ad62;
-  --color-brass-dark: #8a6d35;
+  --color-brass: #c39a51;
+  --color-brass-light: #d9b26b;
+  --color-brass-dark: #8e6930;
 
   --color-sage: #4a7a6a;
   --color-sage-light: #5e9484;
 
-  --color-graphite: #4a4640;
-  --color-graphite-light: #7a756e;
+  --color-graphite: #47423b;
+  --color-graphite-light: #676158;
 
-  --color-line: #06c755;
+  --color-line: #00763a;
 
   --font-sans: "Noto Sans JP", sans-serif;
   --font-serif: "Shippori Mincho", serif;
@@ -27,26 +27,30 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 15px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
 
 @media (min-width: 768px) {
-  html { font-size: 16px; }
+  html { font-size: 17px; }
 }
 
-section[id] { scroll-margin-top: 4rem; }
+section[id] { scroll-margin-top: 5.5rem; }
 
 body {
   font-family: var(--font-sans);
   color: var(--color-graphite);
   background-color: var(--color-sand-light);
-  letter-spacing: 0.03em;
-  line-height: 1.85;
+  letter-spacing: 0.015em;
+  line-height: 1.75;
 }
 
 
 .font-serif { font-family: var(--font-serif); }
+
+::selection {
+  background-color: rgba(195, 154, 81, 0.22);
+}
 
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }

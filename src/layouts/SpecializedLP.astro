@@ -11,14 +11,15 @@ interface Props {
   title: string;
   description: string;
   slug: string;
+  extraJsonLd?: Record<string, unknown>[];
 }
 
-const { title, description, slug } = Astro.props;
+const { title, description, slug, extraJsonLd = [] } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} extraJsonLd={extraJsonLd}>
   <Header />
-  <main>
+  <main class="pt-16 md:pt-[72px]">
     <slot />
     <SideNav currentSlug={slug} />
     <Area />

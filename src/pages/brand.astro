@@ -1,6 +1,8 @@
 ---
 import SpecializedLP from "../layouts/SpecializedLP.astro";
 import CTASection from "../components/CTASection.astro";
+import { homePath, pagePath } from "../lib/site";
+
 const faqs = [
   { q: "箱や保証書がなくても買取できますか？", a: "付属品なしでも買取可能です。ただし箱・保証書・購入証明書が揃っていれば査定額がアップします。" },
   { q: "傷や汚れがあるブランド品でも売れますか？", a: "状態不良品でも買取対象です。使用感があるお品物でもお気軽にご相談ください。" },
@@ -9,48 +11,251 @@ const faqs = [
   { q: "LINEで写真を送って査定してもらえますか？", a: "はい。LINEで写真を送るだけで概算査定が可能です。まずはお気軽にお写真をお送りください。" },
   { q: "複数ブランド品をまとめて売ると高くなりますか？", a: "まとめ売りで査定額を上乗せしております。家電や貴金属と一緒にご依頼いただくことも可能です。" },
 ];
+
+const stats = [
+  { label: "査定方法", value: "写真OK", text: "LINEで概算を出しやすいジャンルです" },
+  { label: "対象品", value: "幅広い", text: "バッグ、時計、ジュエリーに対応" },
+  { label: "支払い", value: "即現金", text: "ご納得後その場でお支払い" },
+];
+
+const itemGroups = [
+  "ブランドバッグ",
+  "ブランド財布・小物",
+  "腕時計",
+  "金・プラチナ・銀",
+  "ダイヤモンド・宝石",
+  "ブランドアクセサリー",
+  "ブランド衣類・靴",
+  "香水・コスメ",
+  "壊れた貴金属",
+];
+
+const advantages = [
+  { title: "持ち歩かずに売れる", text: "高額品を持って店舗に移動する必要がありません。ご自宅で落ち着いて査定を受けられます。" },
+  { title: "まとめて見せやすい", text: "ブランド品だけでなく、貴金属や家電も一緒に査定できるため、整理の効率が上がります。" },
+  { title: "状態が悪くても相談しやすい", text: "角スレ、くすみ、チェーン切れなど、店頭で出しにくいお品物も見せやすいのが出張査定の利点です。" },
+  { title: "真贋や相場の不安を減らせる", text: "本物かわからない品でも無料で確認できます。売るかどうかは査定後に判断できます。" },
+];
+
+const checkPoints = [
+  { title: "付属品", text: "箱、ギャランティカード、余りコマ、保存袋などがあると再販しやすくなります。" },
+  { title: "相場変動", text: "金相場や人気モデルの動きで査定は変わるため、タイミングも大切です。" },
+  { title: "状態", text: "深い傷や破損があっても査定可能ですが、保管状態が良いほど価格はまとまりやすくなります。" },
+  { title: "点数", text: "複数点まとめての方が出張効率が良く、査定提案もしやすくなります。" },
+];
+
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const pageUrl = new URL(pagePath("brand"), siteUrl).toString();
+const homeUrl = new URL(homePath, siteUrl).toString();
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: homeUrl },
+      { "@type": "ListItem", position: 2, name: "ブランド品・貴金属の出張買取", item: pageUrl },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "ブランド品・貴金属の出張買取",
+    serviceType: "ブランド品・貴金属買取",
+    areaServed: "名古屋市・近郊",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "徳丸商会",
+      telephone: "052-990-3968",
+      url: homeUrl,
+    },
+    url: pageUrl,
+    description: "ブランドバッグ、腕時計、金・プラチナなどを自宅で査定する出張買取サービス。",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  },
+];
 ---
-<SpecializedLP title="名古屋のブランド品・貴金属 出張買取｜徳丸商会" description="名古屋市でブランド品・貴金属・腕時計の出張買取なら徳丸商会。ご自宅で査定、その場で現金払い。壊れた貴金属もOK。出張費0円。052-990-3968" slug="brand">
-  <section class="bg-gradient-to-br from-navy via-navy-light to-navy text-white py-12 md:py-20">
-    <div class="max-w-4xl mx-auto px-5 text-center">
-      <p class="text-gold text-xs md:text-sm font-bold mb-3">ブランド品・貴金属の出張買取</p>
-      <h1 class="text-2xl md:text-5xl font-black leading-tight mb-4">ブランド品・貴金属を<br /><span class="text-gold">高価買取</span>いたします</h1>
-      <p class="text-sm md:text-lg text-white/80 mb-6 leading-relaxed">店舗に持ち込む手間なし。ご自宅でゆっくり査定、納得の価格で現金買取。</p>
+
+<SpecializedLP
+  title="名古屋のブランド品・貴金属 出張買取｜徳丸商会"
+  description="名古屋市でブランド品・貴金属・腕時計の出張買取なら徳丸商会。ご自宅で査定、その場で現金払い。壊れた貴金属もOK。出張費0円。052-990-3968"
+  slug="brand"
+  extraJsonLd={structuredData}
+>
+  <section class="relative overflow-hidden bg-[linear-gradient(180deg,#131920_0%,#181f28_56%,#212b35_100%)] text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(195,154,81,0.2),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.06),transparent_24%)]"></div>
+    <div class="relative max-w-7xl mx-auto px-5 py-14 md:py-20">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(320px,0.94fr)] items-end">
+        <div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="rounded-full border border-brass/35 bg-brass/12 px-3 py-1 text-[11px] font-bold tracking-[0.18em] text-brass uppercase">Luxury & Metals</span>
+            <span class="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[11px] text-white/72">ブランド品・時計・貴金属に対応</span>
+          </div>
+          <h1 class="font-serif text-[2.35rem] leading-[1.08] md:text-[4.3rem] mb-6">
+            大切な品ほど、<br />
+            <span class="text-brass">雑に扱わない査定</span>が必要です。
+          </h1>
+          <p class="max-w-2xl text-base md:text-lg leading-[1.9] text-white/76 mb-8">
+            ブランド品や貴金属は、価格だけでなく見せ方の安心感も重要です。徳丸商会ではご自宅で一点ずつ確認し、
+            箱なし、傷あり、壊れたジュエリーまで含めて査定します。売るかどうかは金額を見てから決めて構いません。
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-8">
+            {stats.map((item) => (
+              <div class="rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4">
+                <p class="text-white/45 text-[11px] tracking-[0.22em] uppercase mb-2">{item.label}</p>
+                <p class="font-serif text-3xl leading-none text-white mb-2">{item.value}</p>
+                <p class="text-sm leading-[1.7] text-white/68">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="#cta-mid" class="inline-flex items-center justify-center rounded-full bg-brass px-7 py-4 text-sm md:text-base font-bold text-ink shadow-[0_18px_40px_rgba(195,154,81,0.28)] hover:bg-brass-light transition-colors">写真を送って査定する</a>
+            <a href="tel:052-990-3968" class="inline-flex items-center justify-center rounded-full border border-white/14 bg-white/4 px-7 py-4 text-sm md:text-base font-bold text-white hover:border-white/28 hover:bg-white/7 transition-all">電話で相談する 052-990-3968</a>
+          </div>
+        </div>
+
+        <div class="rounded-[30px] border border-white/10 bg-white/[0.05] p-6 md:p-7 shadow-[0_28px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm">
+          <p class="text-brass text-[11px] tracking-[0.22em] uppercase mb-3">What You Need To Know</p>
+          <h2 class="font-serif text-2xl md:text-[2rem] leading-tight mb-5">先に答えるべきことを整理しました。</h2>
+          <div class="space-y-3">
+            {[
+              "箱や保証書がなくても査定できます。",
+              "チェーン切れや片方だけのピアスでも、地金として値段が付く場合があります。",
+              "本物かわからない品も無料で確認できます。",
+            ].map((point) => (
+              <div class="rounded-2xl border border-white/8 bg-white/[0.04] px-4 py-4 text-sm leading-[1.8] text-white/76">{point}</div>
+            ))}
+          </div>
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl bg-sand px-4 py-4 text-ink">
+              <p class="text-[11px] tracking-[0.18em] uppercase text-graphite-light mb-1">相談しやすい品</p>
+              <p class="font-bold text-base">時計・バッグ</p>
+            </div>
+            <div class="rounded-2xl bg-brass px-4 py-4 text-ink">
+              <p class="text-[11px] tracking-[0.18em] uppercase text-ink/80 mb-1">値段が付きやすい品</p>
+              <p class="font-bold text-base">金・プラチナ</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="py-12 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">買取対象アイテム</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {["ブランドバッグ","ブランド財布・小物","腕時計（ロレックス等）","金・プラチナ・銀","ダイヤモンド・宝石","ブランドアクセサリー","ブランド衣類・靴","香水・コスメ","壊れた貴金属・片方ピアス"].map((item) => (
-          <div class="bg-cream rounded-xl p-4 text-center"><p class="text-navy font-bold text-xs md:text-sm">{item}</p></div>
+
+  <section class="relative z-10 -mt-7 md:-mt-9">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid gap-3 md:grid-cols-3">
+        {[
+          { title: "人目を気にせず査定できる", text: "店舗で見せにくい品でも、自宅なら落ち着いて相談できます。" },
+          { title: "整理の途中でも頼みやすい", text: "生前整理や家財整理の一部として、高価品だけ先に見てもらえます。" },
+          { title: "その場で売るか決められる", text: "相場感を聞いたうえで、手放すか保留にするかを選べます。" },
+        ].map((item) => (
+          <div class="rounded-[26px] border border-sand-dark bg-white px-6 py-6 shadow-[0_22px_45px_rgba(18,24,30,0.08)]">
+            <p class="text-ink font-bold text-lg mb-2">{item.title}</p>
+            <p class="text-sm leading-[1.8] text-graphite-light">{item.text}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
-  <section class="py-12 md:py-20 bg-cream">
-    <div class="max-w-4xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">出張買取のメリット</h2>
-      <div class="space-y-4">
-        {[{title:"店舗に行く必要なし",text:"ご自宅にお伺いするので、貴重品を持ち歩くリスクがありません。"},{title:"プライバシーが守られる",text:"店頭での人目を気にせず、ご自宅で安心して査定を受けられます。"},{title:"まとめ売りで高額に",text:"ブランド品に加え、家電・家具もまとめてご依頼いただくと総額で高値がつきやすくなります。"},{title:"壊れた貴金属もOK",text:"チェーン切れ・変色・片方だけのピアスも、地金としての価値で買取いたします。"}].map((item) => (
-          <div class="bg-white rounded-xl p-5 border border-cream-dark"><h3 class="font-bold text-navy mb-1 text-sm md:text-base">{item.title}</h3><p class="text-warm-gray text-xs md:text-sm leading-relaxed">{item.text}</p></div>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] items-start">
+        <div class="rounded-[32px] border border-sand-dark bg-sand px-7 py-8 md:px-10 md:py-10">
+          <p class="text-graphite text-xs tracking-[0.32em] uppercase mb-4">Purchase Items</p>
+          <h2 class="font-serif text-3xl md:text-5xl text-ink leading-[1.14] mb-5">
+            出張査定で見られる主なアイテム。
+          </h2>
+          <p class="text-base leading-[1.9] text-graphite-light">
+            バッグや時計だけでなく、貴金属やブランド小物、壊れたアクセサリーまで幅広く対象です。
+            自分では値段がわからない品も、まとめて見せていただけます。
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {itemGroups.map((item) => (
+            <div class="rounded-[26px] border border-sand-dark bg-white px-5 py-6 text-center shadow-[0_18px_40px_rgba(18,24,30,0.05)]">
+              <p class="font-bold text-base leading-[1.6] text-ink">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-[linear-gradient(180deg,#171d26_0%,#10151c_100%)] text-white">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="md:flex md:items-end md:justify-between gap-10 mb-10 md:mb-14">
+        <div>
+          <p class="text-brass-light text-xs tracking-[0.32em] uppercase mb-4">Why Home Visit Works</p>
+          <h2 class="font-serif text-3xl md:text-5xl leading-[1.14]">ブランド品の出張査定が<br />向いている理由</h2>
+        </div>
+        <p class="max-w-xl text-sm md:text-base leading-[1.9] text-white/70">
+          もともとのページは「とりあえず並べた感」が強かったので、ここでは判断基準ごとに整理し直しています。
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        {advantages.map((item) => (
+          <div class="rounded-[28px] border border-white/8 bg-white/[0.05] px-6 py-7 shadow-[0_18px_40px_rgba(0,0,0,0.16)]">
+            <h3 class="text-lg font-bold leading-snug mb-3">{item.title}</h3>
+            <p class="text-sm leading-[1.85] text-white/68">{item.text}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
+
+  <section class="py-20 md:py-24">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="rounded-[32px] border border-sand-dark bg-white px-6 py-8 md:px-10 md:py-10 shadow-[0_18px_40px_rgba(18,24,30,0.05)]">
+        <p class="text-graphite text-xs tracking-[0.32em] uppercase mb-4">Assessment Points</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-ink leading-[1.2] mb-6">査定で見られる4つのポイント</h2>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {checkPoints.map((item, index) => (
+            <div class="rounded-[24px] bg-sand-light px-5 py-6 border border-sand-dark">
+              <p class="text-brass-dark font-bold text-sm mb-3">0{index + 1}</p>
+              <h3 class="text-base font-bold text-ink mb-2">{item.title}</h3>
+              <p class="text-sm leading-[1.8] text-graphite-light">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTASection id="cta-mid" variant="mid" />
-  <section class="py-12 md:py-20 bg-cream">
-    <div class="max-w-3xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">ブランド品・貴金属買取のよくある質問</h2>
-      <div class="space-y-3">
+
+  <section class="py-20 md:py-28 bg-sand-light">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="text-center mb-10">
+        <p class="text-graphite text-xs tracking-[0.32em] uppercase mb-4">FAQ</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink leading-[1.14]">ブランド品・貴金属の買取で<br />よくある質問</h2>
+      </div>
+      <div class="space-y-4">
         {faqs.map((faq) => (
-          <div x-data="{ open: false }" class="bg-white rounded-xl border border-cream-dark overflow-hidden">
-            <button x-on:click="open = !open" class="w-full flex items-center justify-between gap-3 p-4 text-left hover:bg-cream/50 transition-colors" x-bind:aria-expanded="open.toString()">
-              <div class="flex items-start gap-2"><span class="flex-shrink-0 w-6 h-6 bg-navy text-white text-xs font-bold rounded-full flex items-center justify-center mt-0.5">Q</span><span class="font-bold text-navy text-sm">{faq.q}</span></div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-warm-gray flex-shrink-0 transition-transform duration-300" x-bind:class="open && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          <div x-data="{ open: false }" class="rounded-[26px] border border-sand-dark bg-white shadow-[0_16px_36px_rgba(18,24,30,0.04)] overflow-hidden">
+            <button x-on:click="open = !open" class="w-full flex items-start justify-between gap-4 px-5 py-5 text-left" x-bind:aria-expanded="open.toString()">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-ink text-xs font-bold text-white">Q</span>
+                <span class="text-sm md:text-base font-bold leading-[1.7] text-ink">{faq.q}</span>
+              </div>
+              <span class="mt-1 text-2xl leading-none text-brass" x-text="open ? '−' : '+'"></span>
             </button>
-            <div x-show="open" x-transition class="px-4 pb-4" style="display: none;">
-              <div class="flex items-start gap-2 pt-2 border-t border-cream-dark"><span class="flex-shrink-0 w-6 h-6 bg-gold text-white text-xs font-bold rounded-full flex items-center justify-center mt-0.5">A</span><p class="text-warm-gray text-xs md:text-sm leading-relaxed">{faq.a}</p></div>
+            <div x-show="open" x-transition style="display: none;" class="px-5 pb-5">
+              <div class="flex items-start gap-3 border-t border-sand-dark pt-4">
+                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-brass text-xs font-bold text-ink">A</span>
+                <p class="text-sm md:text-base leading-[1.9] text-graphite-light">{faq.a}</p>
+              </div>
             </div>
           </div>
         ))}

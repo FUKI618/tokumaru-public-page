@@ -2,13 +2,14 @@
 interface Props {
   title: string;
   description: string;
+  extraJsonLd?: Record<string, unknown>[];
 }
 
 import "../styles/global.css";
 import { assetPath, homePath } from "../lib/site";
 import { faqsToJsonLd } from "../data/faq";
 
-const { title, description } = Astro.props;
+const { title, description, extraJsonLd = [] } = Astro.props;
 const canonicalUrl = Astro.url.href;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
 const homeUrl = new URL(homePath, siteUrl).toString();
@@ -148,6 +149,10 @@ const faviconUrl = assetPath("favicon.svg");
         }
       ]
     })} />
+
+    {extraJsonLd.map((entry) => (
+      <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
   </head>
   <body class="antialiased">
     <!-- Google Tag Manager (noscript) -->

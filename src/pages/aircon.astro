@@ -1,69 +1,262 @@
 ---
 import SpecializedLP from "../layouts/SpecializedLP.astro";
 import CTASection from "../components/CTASection.astro";
+import { homePath, pagePath } from "../lib/site";
+
 const faqs = [
   { q: "エアコンの取り外し工事もやってもらえますか？", a: "はい。買取成立時は取り外し工事費無料で対応いたします。配管の取り外しから壁穴の補修まで丁寧に作業します。" },
   { q: "製造から何年以内なら買取できますか？", a: "5年以内が高価買取の目安です。6〜10年は状態次第で買取可能。10年以上は無料回収または有料処分となる場合があります。" },
   { q: "業務用エアコンも買取対象ですか？", a: "はい。天井埋め込み型・天井吊り型など業務用エアコンも取り外し工事込みで対応可能です。" },
   { q: "解体予定の建物のエアコンも対応できますか？", a: "解体前物件のエアコン取り外し・買取も対応しております。複数台まとめてのご依頼で査定額アップ。" },
   { q: "高い場所に設置されたエアコンでも大丈夫ですか？", a: "高所作業にも対応しております。設置場所の状況を事前にお知らせいただけるとスムーズです。" },
-  { q: "買取できない場合はどうなりますか？", a: "条件次第で無料回収、または有料処分（リサイクル料990円程度+取り外し費）で対応いたします。" },
+  { q: "買取できない場合はどうなりますか？", a: "条件次第で無料回収、または有料処分で対応いたします。処分前に査定可能かをまず確認します。" },
+];
+
+const stats = [
+  { label: "工事込み", value: "取外し", text: "買取成立時は取り外し費無料" },
+  { label: "最短対応", value: "即日", text: "繁忙期でも急ぎの相談に対応" },
+  { label: "対応範囲", value: "家庭用 + 業務用", text: "設置状況に応じてご案内" },
+];
+
+const comparisonRows = [
+  ["徳丸商会の出張買取", "0円 or 現金化", "楽", "取外し込みで判断が早い"],
+  ["家電量販店の引取", "3,000〜6,000円", "普通", "買い替え時なら選択肢"],
+  ["自治体・指定引取", "990円 + 取外費", "手間大", "手続きが分かりづらい"],
+  ["不用品回収業者", "5,000〜10,000円", "普通", "価格差が大きい"],
+];
+
+const priceCards = [
+  { size: "〜10畳", range: "10,000〜30,000円", text: "一人暮らし向けの主力帯" },
+  { size: "10〜20畳", range: "30,000〜70,000円", text: "ファミリー向けで需要が高い帯" },
+  { size: "20畳〜", range: "50,000〜100,000円", text: "高年式・高性能モデルは査定が伸びやすい帯" },
+];
+
+const sellPoints = [
+  { title: "春から初夏に強い", text: "夏前は中古エアコンの需要が高まるため、査定が動きやすい時期です。" },
+  { title: "配管・リモコンが残っている", text: "不足が少ないほど再販しやすく、金額もまとめやすくなります。" },
+  { title: "室外機の状態が良い", text: "屋外設置の影響を受けやすいため、傷みが少ない機体は評価が安定します。" },
+  { title: "複数台をまとめて依頼", text: "戸建てや事務所の複数台整理は、出張効率が良く査定も組みやすくなります。" },
+];
+
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const pageUrl = new URL(pagePath("aircon"), siteUrl).toString();
+const homeUrl = new URL(homePath, siteUrl).toString();
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: homeUrl },
+      { "@type": "ListItem", position: 2, name: "エアコン取外し・出張買取", item: pageUrl },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "エアコン取外し・出張買取",
+    serviceType: "エアコン出張買取",
+    areaServed: "名古屋市・近郊",
+    provider: {
+      "@type": "LocalBusiness",
+      name: "徳丸商会",
+      telephone: "052-990-3968",
+      url: homeUrl,
+    },
+    url: pageUrl,
+    description: "エアコンの取り外し工事を含む出張買取サービス。家庭用から業務用まで対応。",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  },
 ];
 ---
-<SpecializedLP title="名古屋のエアコン取外し・出張買取｜徳丸商会" description="名古屋市でエアコンの取外し・出張買取なら徳丸商会。取外し工事込みで買取。ダイキン・パナソニック等全メーカー対応。出張費0円。052-990-3968" slug="aircon">
-  <section class="bg-gradient-to-br from-navy via-navy-light to-navy text-white py-12 md:py-20">
-    <div class="max-w-4xl mx-auto px-5 text-center">
-      <p class="text-gold text-xs md:text-sm font-bold mb-3">取外し工事込みの出張買取</p>
-      <h1 class="text-2xl md:text-5xl font-black leading-tight mb-4">エアコンを<br /><span class="text-gold">取外し込みで買取</span></h1>
-      <p class="text-sm md:text-lg text-white/80 mb-6 leading-relaxed">面倒な取外し工事もスタッフが対応。取外し費用は買取額から差し引きません。</p>
-      <div class="text-center"><p class="text-2xl md:text-3xl font-black text-gold">¥21,000<span class="text-sm">〜</span></p><p class="text-[10px] md:text-xs text-white/60">エアコン買取実績</p></div>
-    </div>
-  </section>
-  <section class="py-12 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">エアコン処分方法の比較</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse"><thead><tr class="bg-navy text-white"><th class="px-3 py-3 text-left rounded-tl-lg">方法</th><th class="px-3 py-3 text-center">費用</th><th class="px-3 py-3 text-center">手間</th><th class="px-3 py-3 text-center rounded-tr-lg">おすすめ</th></tr></thead>
-        <tbody>
-          {[["出張買取（当社）","0円（現金GET）","◎ 楽","★★★"],["家電量販店引取","3,000〜6,000円","○ 普通","★★"],["自治体回収","990円+取外費","△ 手間大","★"],["不用品回収業者","5,000〜10,000円","○ 普通","★"]].map(([m,c,e,r],i)=>(
-            <tr class={i===0?"bg-cta/5 font-bold":i%2===0?"bg-cream":"bg-white"}><td class="px-3 py-3 text-navy">{m}</td><td class="px-3 py-3 text-center">{c}</td><td class="px-3 py-3 text-center">{e}</td><td class="px-3 py-3 text-center">{r}</td></tr>
-          ))}
-        </tbody></table>
+
+<SpecializedLP
+  title="名古屋のエアコン取外し・出張買取｜徳丸商会"
+  description="名古屋市でエアコンの取外し・出張買取なら徳丸商会。取外し工事込みで買取。ダイキン・パナソニック等全メーカー対応。出張費0円。052-990-3968"
+  slug="aircon"
+  extraJsonLd={structuredData}
+>
+  <section class="relative overflow-hidden bg-[linear-gradient(180deg,#131920_0%,#181f29_56%,#202b36_100%)] text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(195,154,81,0.18),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.06),transparent_24%)]"></div>
+    <div class="relative max-w-7xl mx-auto px-5 py-14 md:py-20">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.06fr)_minmax(320px,0.94fr)] items-end">
+        <div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="rounded-full border border-brass/35 bg-brass/12 px-3 py-1 text-[11px] font-bold tracking-[0.18em] text-brass uppercase">Aircon Removal</span>
+            <span class="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[11px] text-white/72">取り外し工事込みで査定</span>
+          </div>
+          <h1 class="font-serif text-[2.35rem] leading-[1.08] md:text-[4.3rem] mb-6">
+            エアコンは、<br />
+            <span class="text-brass">外すところから</span>任せてください。
+          </h1>
+          <p class="max-w-2xl text-base md:text-lg leading-[1.9] text-white/76 mb-8">
+            エアコンは「売れるかどうか」以前に、取り外しが面倒です。徳丸商会なら取り外し工事を含めて現地で判断し、
+            買取可能ならその場で現金化、難しい場合も回収や処分方法まで整理してご案内します。
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-8">
+            {stats.map((item) => (
+              <div class="rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4">
+                <p class="text-white/45 text-[11px] tracking-[0.22em] uppercase mb-2">{item.label}</p>
+                <p class="font-serif text-3xl leading-none text-white mb-2">{item.value}</p>
+                <p class="text-sm leading-[1.7] text-white/68">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="#cta-mid" class="inline-flex items-center justify-center rounded-full bg-brass px-7 py-4 text-sm md:text-base font-bold text-ink shadow-[0_18px_40px_rgba(195,154,81,0.28)] hover:bg-brass-light transition-colors">取り外し込みで相談する</a>
+            <a href="tel:052-990-3968" class="inline-flex items-center justify-center rounded-full border border-white/14 bg-white/4 px-7 py-4 text-sm md:text-base font-bold text-white hover:border-white/28 hover:bg-white/7 transition-all">電話で相談する 052-990-3968</a>
+          </div>
+        </div>
+
+        <div class="rounded-[30px] border border-white/10 bg-white/[0.05] p-6 md:p-7 shadow-[0_28px_70px_rgba(0,0,0,0.24)] backdrop-blur-sm">
+          <p class="text-brass text-[11px] tracking-[0.22em] uppercase mb-3">At A Glance</p>
+          <h2 class="font-serif text-2xl md:text-[2rem] leading-tight mb-5">先に判断材料を見せます。</h2>
+          <div class="space-y-3">
+            {[
+              "5年以内の国内メーカーは高価買取になりやすいです。",
+              "室外機やリモコンが残っていると評価が安定します。",
+              "解体前の物件や複数台の撤去もまとめて対応できます。",
+            ].map((point) => (
+              <div class="rounded-2xl border border-white/8 bg-white/[0.04] px-4 py-4 text-sm leading-[1.8] text-white/76">{point}</div>
+            ))}
+          </div>
+          <div class="mt-5 rounded-[24px] bg-sand px-5 py-5 text-ink">
+            <p class="text-[11px] tracking-[0.18em] uppercase text-graphite-light mb-2">買取実績</p>
+            <p class="font-serif text-3xl leading-none mb-2">21,000円〜</p>
+            <p class="text-sm leading-[1.8] text-graphite-light">ルームエアコンの取り外し込み査定実績</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="py-12 md:py-20 bg-cream">
-    <div class="max-w-4xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">容量別の買取相場</h2>
-      <div class="space-y-3">
-        {[{size:"〜10畳（2.8kW以下）",range:"10,000〜30,000円"},{size:"10〜20畳（2.8〜6.3kW）",range:"30,000〜70,000円"},{size:"20畳〜（6.3kW以上）",range:"50,000〜100,000円"}].map((item)=>(
-          <div class="bg-white rounded-xl p-5 border border-cream-dark flex justify-between items-center"><span class="text-navy font-bold text-sm">{item.size}</span><span class="text-cta font-black text-lg">{item.range}</span></div>
+
+  <section class="relative z-10 -mt-7 md:-mt-9">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid gap-3 md:grid-cols-3">
+        {[
+          { title: "買い替え前の整理に強い", text: "新居や新機種への交換前に、古い機体の撤去と査定をまとめて進められます。" },
+          { title: "高所や特殊な設置にも対応", text: "設置場所の写真があれば、事前に必要な作業の目安をお伝えできます。" },
+          { title: "処分費と比較できる", text: "捨てる前に査定しておくことで、余計な処分費を回避できる可能性があります。" },
+        ].map((item) => (
+          <div class="rounded-[26px] border border-sand-dark bg-white px-6 py-6 shadow-[0_22px_45px_rgba(18,24,30,0.08)]">
+            <p class="text-ink font-bold text-lg mb-2">{item.title}</p>
+            <p class="text-sm leading-[1.8] text-graphite-light">{item.text}</p>
+          </div>
         ))}
       </div>
-      <p class="text-warm-gray-light text-xs mt-4 text-center">※メーカー・年式・状態により異なります</p>
     </div>
   </section>
-  <section class="py-12 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">エアコン買取のベストタイミング</h2>
-      <div class="bg-cream rounded-xl p-6 border border-cream-dark text-left max-w-2xl mx-auto">
-        <p class="text-warm-gray text-sm leading-[1.9]">エアコンは<strong class="text-navy">春〜初夏（3月〜6月）</strong>が最も高く売れる時期です。夏前に中古エアコンの需要が高まるため、買取価格が上がります。引越しシーズンと重なるこの時期に、不要なエアコンをまとめて売却するのがおすすめです。</p>
+
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] items-start">
+        <div class="rounded-[32px] border border-sand-dark bg-sand px-7 py-8 md:px-10 md:py-10">
+          <p class="text-graphite text-xs tracking-[0.32em] uppercase mb-4">Compare</p>
+          <h2 class="font-serif text-3xl md:text-5xl text-ink leading-[1.14] mb-5">
+            処分より先に、<br />出張買取を比べるべき理由。
+          </h2>
+          <p class="text-base leading-[1.9] text-graphite-light">
+            エアコンは家電リサイクルや取り外し費が絡むため、処分すると費用が読みづらくなります。
+            出張買取なら、売却・回収・処分のどれが最適かを一度で整理できます。
+          </p>
+        </div>
+        <div class="rounded-[30px] border border-sand-dark bg-white p-4 md:p-6 shadow-[0_20px_50px_rgba(18,24,30,0.06)]">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[620px] text-sm">
+              <thead>
+                <tr class="border-b border-sand-dark">
+                  <th class="px-4 py-4 text-left font-bold text-ink">方法</th>
+                  <th class="px-4 py-4 text-center font-bold text-ink">費用感</th>
+                  <th class="px-4 py-4 text-center font-bold text-ink">手間</th>
+                  <th class="px-4 py-4 text-left font-bold text-ink">特徴</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map(([method, cost, effort, feature], index) => (
+                  <tr class={index === 0 ? "bg-sand-light" : index % 2 === 0 ? "bg-white" : "bg-sand-light/45"}>
+                    <td class="px-4 py-4 font-bold text-ink">{method}</td>
+                    <td class="px-4 py-4 text-center font-bold text-brass-dark">{cost}</td>
+                    <td class="px-4 py-4 text-center text-graphite-light">{effort}</td>
+                    <td class="px-4 py-4 text-graphite-light">{feature}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <section class="py-20 md:py-28 bg-[linear-gradient(180deg,#171d26_0%,#10151c_100%)] text-white">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="md:flex md:items-end md:justify-between gap-10 mb-10 md:mb-14">
+        <div>
+          <p class="text-brass-light text-xs tracking-[0.32em] uppercase mb-4">Price Guide</p>
+          <h2 class="font-serif text-3xl md:text-5xl leading-[1.14]">容量帯ごとの目安と、<br />高くなりやすい条件</h2>
+        </div>
+        <p class="max-w-xl text-sm md:text-base leading-[1.9] text-white/70">
+          相場だけでは弱いので、どういう条件で価格差が出るかまでページ内に残しています。
+        </p>
+      </div>
+      <div class="grid gap-4 xl:grid-cols-[0.92fr_1.08fr]">
+        <div class="grid gap-4 md:grid-cols-3 xl:grid-cols-1">
+          {priceCards.map((item) => (
+            <div class="rounded-[28px] border border-white/8 bg-white/[0.05] px-6 py-7">
+              <p class="text-sm font-bold text-brass mb-3">{item.size}</p>
+              <p class="font-serif text-[2rem] leading-none mb-3">{item.range}</p>
+              <p class="text-sm leading-[1.8] text-white/68">{item.text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {sellPoints.map((item, index) => (
+            <div class="rounded-[28px] border border-white/8 bg-white/[0.05] px-6 py-7 shadow-[0_18px_40px_rgba(0,0,0,0.16)]">
+              <p class="text-brass text-sm font-bold mb-4">0{index + 1}</p>
+              <h3 class="text-lg font-bold leading-snug mb-3">{item.title}</h3>
+              <p class="text-sm leading-[1.85] text-white/68">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p class="mt-5 text-xs leading-[1.8] text-white/55">※金額はメーカー、年式、能力、設置状況によって変動します。</p>
+    </div>
+  </section>
+
   <CTASection id="cta-mid" variant="mid" />
-  <section class="py-12 md:py-20 bg-cream">
-    <div class="max-w-3xl mx-auto px-5">
-      <h2 class="text-xl md:text-3xl font-bold text-center text-navy mb-8">エアコン買取のよくある質問</h2>
-      <div class="space-y-3">
-        {faqs.map((faq)=>(
-          <div x-data="{ open: false }" class="bg-white rounded-xl border border-cream-dark overflow-hidden">
-            <button x-on:click="open = !open" class="w-full flex items-center justify-between gap-3 p-4 text-left hover:bg-cream/50 transition-colors" x-bind:aria-expanded="open.toString()">
-              <div class="flex items-start gap-2"><span class="flex-shrink-0 w-6 h-6 bg-navy text-white text-xs font-bold rounded-full flex items-center justify-center mt-0.5">Q</span><span class="font-bold text-navy text-sm">{faq.q}</span></div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-warm-gray flex-shrink-0 transition-transform duration-300" x-bind:class="open && 'rotate-180'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+
+  <section class="py-20 md:py-28 bg-sand-light">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="text-center mb-10">
+        <p class="text-graphite text-xs tracking-[0.32em] uppercase mb-4">FAQ</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-ink leading-[1.14]">エアコン買取で<br />よくある質問</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div x-data="{ open: false }" class="rounded-[26px] border border-sand-dark bg-white shadow-[0_16px_36px_rgba(18,24,30,0.04)] overflow-hidden">
+            <button x-on:click="open = !open" class="w-full flex items-start justify-between gap-4 px-5 py-5 text-left" x-bind:aria-expanded="open.toString()">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-ink text-xs font-bold text-white">Q</span>
+                <span class="text-sm md:text-base font-bold leading-[1.7] text-ink">{faq.q}</span>
+              </div>
+              <span class="mt-1 text-2xl leading-none text-brass" x-text="open ? '−' : '+'"></span>
             </button>
-            <div x-show="open" x-transition class="px-4 pb-4" style="display: none;">
-              <div class="flex items-start gap-2 pt-2 border-t border-cream-dark"><span class="flex-shrink-0 w-6 h-6 bg-gold text-white text-xs font-bold rounded-full flex items-center justify-center mt-0.5">A</span><p class="text-warm-gray text-xs md:text-sm leading-relaxed">{faq.a}</p></div>
+            <div x-show="open" x-transition style="display: none;" class="px-5 pb-5">
+              <div class="flex items-start gap-3 border-t border-sand-dark pt-4">
+                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-brass text-xs font-bold text-ink">A</span>
+                <p class="text-sm md:text-base leading-[1.9] text-graphite-light">{faq.a}</p>
+              </div>
             </div>
           </div>
         ))}
